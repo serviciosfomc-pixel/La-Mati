@@ -1,0 +1,898 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Mati — Salchipapería</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black:   #080808;
+      --dark:    #111111;
+      --card:    #161616;
+      --gold:    #FFB800;
+      --amber:   #C97D20;
+      --white:   #FFFFFF;
+      --muted:   rgba(255,255,255,0.52);
+      --border:  rgba(255,255,255,0.07);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ══════════════ NAV ══════════════ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 64px;
+      background: linear-gradient(to bottom, rgba(8,8,8,0.92) 60%, transparent);
+      backdrop-filter: blur(4px);
+    }
+
+    .nav-logo img { height: 50px; width: auto; display: block; }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    .nav-link {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.875rem;
+      letter-spacing: 0.02em;
+      opacity: 0.85;
+      transition: opacity 0.2s, color 0.2s;
+    }
+    .nav-link:hover { opacity: 1; color: var(--gold); }
+
+    .btn-outline {
+      border: 1.5px solid var(--white);
+      color: var(--white);
+      padding: 9px 24px;
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .btn-outline:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #000;
+    }
+
+    /* ══════════════ HERO ══════════════ */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 160px 56px 80px 64px;
+      background: var(--black);
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 22px;
+    }
+
+    .hero-h1 {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(2.6rem, 4.2vw, 4rem);
+      font-weight: 700;
+      line-height: 1.08;
+      margin-bottom: 4px;
+    }
+
+    .hero-h1 em {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: var(--gold);
+      display: block;
+      line-height: 1.12;
+    }
+
+    .hero-desc {
+      max-width: 360px;
+      color: var(--muted);
+      font-size: 0.93rem;
+      line-height: 1.8;
+      margin: 22px 0 10px;
+    }
+
+    .hero-price {
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #000;
+      border: none;
+      padding: 13px 32px;
+      border-radius: 100px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.18s, box-shadow 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover {
+      opacity: 0.88;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(255,184,0,0.35);
+    }
+
+    .btn-play {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .btn-play:hover { color: var(--gold); }
+
+    .play-circle {
+      width: 44px; height: 44px;
+      border: 1.5px solid rgba(255,255,255,0.38);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: border-color 0.2s;
+    }
+    .btn-play:hover .play-circle { border-color: var(--gold); }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-right img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .hero-right::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, var(--black) 0%, rgba(8,8,8,0.15) 35%, transparent 60%);
+    }
+
+    /* ══════════════ ENDORSED ══════════════ */
+    #endorsed {
+      padding: 72px 64px 80px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .section-h2 {
+      font-size: clamp(1.7rem, 2.8vw, 2.6rem);
+      font-weight: 700;
+      line-height: 1.15;
+    }
+    .section-h2 em {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+    }
+
+    .logos-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 72px;
+      margin-top: 44px;
+      flex-wrap: wrap;
+    }
+
+    .logo-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.65);
+      transition: color 0.2s;
+    }
+    .logo-pill:hover { color: var(--white); }
+
+    .logo-dot {
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 0.85rem; color: #fff;
+    }
+    .dot-rappi   { background: #FF2C55; }
+    .dot-pedidos { background: #FA3F30; }
+    .dot-whatsapp{ background: #25D366; }
+
+    /* ══════════════ FEATURES ══════════════ */
+    #features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 120px 64px 110px;
+      max-width: 1320px;
+      margin: 0 auto;
+      gap: 0;
+    }
+
+    .feat-left { padding-right: 80px; }
+
+    .feat-left h2 {
+      font-size: clamp(1.9rem, 3.2vw, 2.9rem);
+      font-weight: 700;
+      line-height: 1.13;
+      margin-bottom: 22px;
+    }
+    .feat-left h2 em {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .feat-left p {
+      color: var(--muted);
+      font-size: 0.93rem;
+      line-height: 1.82;
+      margin-bottom: 30px;
+      max-width: 380px;
+    }
+
+    .link-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--white);
+      font-size: 0.88rem;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.28);
+      padding-bottom: 3px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .link-arrow:hover { color: var(--gold); border-color: var(--gold); }
+
+    .feat-right {
+      padding-left: 64px;
+      border-left: 1px solid var(--border);
+    }
+
+    .feat-item { margin-bottom: 34px; }
+    .feat-item h3 {
+      font-size: 0.97rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .feat-item p {
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.72;
+    }
+
+    .delivery-btns {
+      display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap;
+    }
+    .delivery-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 9px 18px;
+      color: var(--white);
+      font-size: 0.78rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .delivery-btn:hover {
+      background: rgba(255,184,0,0.1);
+      border-color: rgba(255,184,0,0.4);
+    }
+
+    /* ══════════════ SHOWCASE ══════════════ */
+    #showcase {
+      position: relative;
+      height: 560px;
+      overflow: hidden;
+    }
+    #showcase img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 25%;
+      display: block;
+    }
+    #showcase::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.48);
+      z-index: 1;
+    }
+
+    .showcase-center {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      text-align: center;
+    }
+
+    .big-play {
+      width: 76px; height: 76px;
+      border: 2px solid rgba(255,255,255,0.55);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 14px;
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .big-play:hover { border-color: var(--gold); transform: scale(1.07); }
+
+    .showcase-label {
+      font-size: 0.84rem;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.8);
+    }
+
+    /* ══════════════ MENU ══════════════ */
+    #menu {
+      padding: 110px 64px;
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .section-header .section-eyebrow { color: var(--gold); }
+    .section-header h2 { margin-top: 10px; }
+    .section-header p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 12px;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 22px;
+    }
+
+    .menu-card {
+      background: var(--card);
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: transform 0.24s, border-color 0.24s, box-shadow 0.24s;
+    }
+    .menu-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255,184,0,0.28);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+    }
+
+    .menu-card-img {
+      width: 100%; height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .menu-card-body { padding: 20px 22px 22px; }
+    .menu-card-body h3 { font-size: 0.97rem; font-weight: 600; margin-bottom: 7px; }
+    .menu-card-body p { color: var(--muted); font-size: 0.82rem; line-height: 1.65; margin-bottom: 14px; }
+    .menu-price { font-size: 1.12rem; font-weight: 700; color: var(--gold); }
+
+    /* ══════════════ TESTIMONIALS ══════════════ */
+    #testimonials {
+      padding: 90px 64px;
+      background: var(--dark);
+    }
+
+    .test-header {
+      text-align: center;
+      margin-bottom: 54px;
+    }
+
+    .test-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    .test-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px 30px;
+    }
+
+    .test-text {
+      color: rgba(255,255,255,0.72);
+      font-size: 0.88rem;
+      line-height: 1.82;
+      margin-bottom: 24px;
+    }
+
+    .test-author {
+      display: flex; align-items: center; gap: 14px;
+    }
+
+    .test-avatar {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--amber), var(--gold));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; font-weight: 700; color: #000;
+      flex-shrink: 0;
+    }
+
+    .test-name { font-size: 0.9rem; font-weight: 600; }
+    .test-role { font-size: 0.77rem; color: var(--muted); }
+
+    .test-dots {
+      display: flex; justify-content: center; gap: 8px;
+      margin-top: 38px;
+    }
+    .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.18);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .dot.active { background: var(--gold); width: 22px; border-radius: 4px; }
+
+    /* ══════════════ CTA ══════════════ */
+    #cta {
+      padding: 130px 64px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #cta::before {
+      content: '';
+      position: absolute;
+      bottom: -160px; left: 50%;
+      transform: translateX(-50%);
+      width: 900px; height: 900px;
+      background: radial-gradient(circle, rgba(255,184,0,0.05) 0%, transparent 62%);
+      pointer-events: none;
+    }
+
+    .cta-eyebrow { color: var(--gold); margin-bottom: 12px; }
+
+    #cta h2 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.12;
+      max-width: 640px;
+      margin: 0 auto 38px;
+    }
+    #cta h2 em {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+    }
+
+    /* ══════════════ FOOTER ══════════════ */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 64px 64px 36px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+      gap: 40px;
+      max-width: 1320px;
+      margin: 0 auto 52px;
+    }
+
+    .footer-brand img { height: 50px; margin-bottom: 16px; display: block; }
+    .footer-brand p {
+      color: var(--muted);
+      font-size: 0.82rem;
+      line-height: 1.72;
+      max-width: 210px;
+    }
+
+    .footer-col h4 {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 18px;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 10px; }
+    .footer-col a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.84rem;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      max-width: 1320px;
+      margin: 0 auto;
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-copy { color: var(--muted); font-size: 0.77rem; }
+
+    .social-row { display: flex; gap: 10px; }
+    .social-btn {
+      width: 34px; height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.7rem;
+      font-weight: 600;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .social-btn:hover { border-color: var(--gold); color: var(--gold); }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <div class="nav-logo">
+      <img src="logo-la-mati.png" alt="La Mati">
+    </div>
+    <div class="nav-right">
+      <a href="#menu"     class="nav-link">Menú</a>
+      <a href="#features" class="nav-link">Nosotros</a>
+      <a href="https://www.instagram.com/lamati_rest/" target="_blank" rel="noopener noreferrer" class="btn-outline">Pedir Ahora</a>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">La salchipapería de tu barrio</p>
+      <h1 class="hero-h1">
+        El sabor que<br>
+        <em>siempre buscas</em>
+      </h1>
+      <p class="hero-desc">
+        Papa nativa crujiente, salchicha jugosa y las mejores salsas de Lima.
+        Hecha al momento, con ingredientes frescos y todo el sabor auténtico.
+      </p>
+      <p class="hero-price">Desde S/. 12.50</p>
+      <div class="hero-actions">
+        <a href="https://www.instagram.com/lamati_rest/" target="_blank" rel="noopener noreferrer" class="btn-primary">Pedir Ahora</a>
+        <a href="#menu" class="btn-play">
+          <span class="play-circle">
+            <svg width="11" height="13" viewBox="0 0 11 13" fill="white">
+              <path d="M0.5 0.5l10 6-10 6V0.5z"/>
+            </svg>
+          </span>
+          Ver carta completa
+        </a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img src="img/salchipapa-royal-especial.png" alt="SalchiRoyal Especial">
+    </div>
+  </section>
+
+  <!-- ── ENDORSED ── -->
+  <section id="endorsed">
+    <p class="section-eyebrow">Encuéntranos también en</p>
+    <h2 class="section-h2">Disponible en <em>las mejores apps</em></h2>
+    <div class="logos-row">
+      <div class="logo-pill">
+        <div class="logo-dot dot-rappi">R</div>
+        Rappi
+      </div>
+      <div class="logo-pill">
+        <div class="logo-dot dot-pedidos">P</div>
+        PedidosYa
+      </div>
+      <div class="logo-pill">
+        <div class="logo-dot dot-whatsapp">W</div>
+        WhatsApp
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FEATURES ── -->
+  <section id="features">
+    <div class="feat-left">
+      <h2>Disfruta las mejores<br><em>salchipapas a tu manera.</em></h2>
+      <p>
+        En La Mati preparamos cada plato al momento con papa nativa seleccionada,
+        salchichas de primera calidad y salsas artesanales hechas en casa.
+        Porque el sabor auténtico no se improvisa.
+      </p>
+      <a href="#menu" class="link-arrow">Ver Menú Completo →</a>
+    </div>
+    <div class="feat-right">
+      <div class="feat-item">
+        <h3>Clásicas y Especiales</h3>
+        <p>Desde la Salchipapa Clásica hasta la Royal Especial con pollo desmenuzado,
+           huevo frito y salchicha Frankfürt. Para todos los gustos.</p>
+      </div>
+      <div class="feat-item">
+        <h3>Salsas Artesanales</h3>
+        <p>Mayonesa casera, Ají Mati, Salsa de la Casa y Salsa de Palta.
+           Preparadas al momento con ingredientes frescos.</p>
+      </div>
+      <div class="feat-item">
+        <h3>Pedido a domicilio</h3>
+        <p>Pide por Rappi o PedidosYa. Tu salchipapa favorita llega
+           caliente directo a tu puerta.</p>
+      </div>
+      <div class="delivery-btns">
+        <a href="https://www.instagram.com/lamati_rest/" target="_blank" rel="noopener noreferrer" class="delivery-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="10" fill="#FF2C55"/><text x="12" y="16" text-anchor="middle" fill="white" font-size="12" font-weight="bold" font-family="Arial">R</text></svg>
+          Rappi
+        </a>
+        <a href="https://www.instagram.com/lamati_rest/" target="_blank" rel="noopener noreferrer" class="delivery-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="10" fill="#FA3F30"/><text x="12" y="16" text-anchor="middle" fill="white" font-size="12" font-weight="bold" font-family="Arial">P</text></svg>
+          PedidosYa
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SHOWCASE ── -->
+  <section id="showcase">
+    <img src="img/salchipapa-americana.png" alt="Salchipapa La Mati">
+    <div class="showcase-center">
+      <div class="big-play">
+        <svg width="20" height="22" viewBox="0 0 20 22" fill="white">
+          <path d="M1 1l18 10L1 21V1z"/>
+        </svg>
+      </div>
+      <p class="showcase-label">Ver cómo preparamos tu plato</p>
+    </div>
+  </section>
+
+  <!-- ── MENU ── -->
+  <section id="menu">
+    <div class="section-header">
+      <p class="section-eyebrow">Nuestra carta</p>
+      <h2 class="section-h2">Salchipapas que <em>enamoran</em></h2>
+      <p>Papa nativa 350g · Salchicha de primera · Las mejores salsas de Lima</p>
+    </div>
+    <div class="menu-grid">
+
+      <div class="menu-card">
+        <img class="menu-card-img" src="img/salchipapa-clasica.png" alt="Salchipapa Clásica">
+        <div class="menu-card-body">
+          <h3>Salchipapa Clásica</h3>
+          <p>Papa nativa 350g y salchicha Frankfürt. El sabor de siempre.</p>
+          <span class="menu-price">S/. 12.50</span>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img class="menu-card-img" src="img/salchipollo.png" alt="Salchipollo">
+        <div class="menu-card-body">
+          <h3>Salchipollo</h3>
+          <p>Papa nativa, salchicha Frankfürt y pollo desmenuzado.</p>
+          <span class="menu-price">S/. 13.00</span>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img class="menu-card-img" src="img/salchipapa-arequipena.png" alt="Arequipeña">
+        <div class="menu-card-body">
+          <h3>Arequipeña</h3>
+          <p>Papa nativa 350g y salchicha arequipeña. Sabor del sur.</p>
+          <span class="menu-price">S/. 13.00</span>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img class="menu-card-img" src="img/salchipapa-royal-especial.png" alt="SalchiRoyal Especial">
+        <div class="menu-card-body">
+          <h3>SalchiRoyal Especial</h3>
+          <p>Papa nativa, salchicha, pollo desmenuzado y huevo frito.</p>
+          <span class="menu-price">S/. 15.00</span>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img class="menu-card-img" src="img/salchipapa-francesa.png" alt="Francesa Especial">
+        <div class="menu-card-body">
+          <h3>Francesa Especial</h3>
+          <p>Papa nativa, salchicha, pollo desmenuzado y queso derretido.</p>
+          <span class="menu-price">S/. 16.00</span>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img class="menu-card-img" src="img/salchipapa-americana.png" alt="Salchipapa Americana">
+        <div class="menu-card-body">
+          <h3>Salchipapa Americana</h3>
+          <p>Papa nativa, salchicha Frankfürt, tocino y huevo frito.</p>
+          <span class="menu-price">S/. 15.00</span>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img class="menu-card-img" src="img/salchipapa-andina.png" alt="Salchipapa Andina">
+        <div class="menu-card-body">
+          <h3>Salchipapa Andina</h3>
+          <p>Papa nativa, salchicha, chorizo finas hierbas y pollo desmenuzado.</p>
+          <span class="menu-price">S/. 16.50</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── TESTIMONIALS ── -->
+  <section id="testimonials">
+    <div class="test-header">
+      <h2 class="section-h2">Recomendado por <em>nuestros clientes</em></h2>
+    </div>
+    <div class="test-grid">
+      <div class="test-card">
+        <p class="test-text">
+          "La Mati tiene las mejores salchipapas que he probado en Lima.
+          La papa siempre crujiente, la salchicha perfecta y las salsas artesanales
+          son una locura. Me las pido cada semana por Rappi."
+        </p>
+        <div class="test-author">
+          <div class="test-avatar">K</div>
+          <div>
+            <p class="test-name">Kevin Rojas</p>
+            <p class="test-role">Cliente frecuente · Lima</p>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <p class="test-text">
+          "Pedí la Royal Especial y quedé sorprendida. El pollo desmenuzado
+          con el huevo frito y la salchicha es una combinación increíble.
+          Sin duda la mejor salchipapería del barrio."
+        </p>
+        <div class="test-author">
+          <div class="test-avatar">S</div>
+          <div>
+            <p class="test-name">Sandra Quispe</p>
+            <p class="test-role">Gerente de proyectos · Lima</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="test-dots">
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section id="cta">
+    <p class="section-eyebrow cta-eyebrow">Descubre nuestra carta</p>
+    <h2>Empieza tu viaje hacia<br><em>la salchipapa perfecta</em></h2>
+    <a href="https://www.instagram.com/lamati_rest/" target="_blank" rel="noopener noreferrer" class="btn-primary">Pedir Ahora</a>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="logo-la-mati.png" alt="La Mati">
+        <p>La mejor salchipapería de Lima. Papa nativa, sabor auténtico y salsas artesanales hechas en casa.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Menú</h4>
+        <ul>
+          <li><a href="https://www.instagram.com/lamati_rest/" target="_blank" rel="noopener noreferrer">Clásicas</a></li>
+          <li><a href="https://www.instagram.com/lamati_rest/" target="_blank" rel="noopener noreferrer">Especiales</a></li>
+          <li><a href="https://www.instagram.com/lamati_rest/" target="_blank" rel="noopener noreferrer">Salsas</a></li>
+          <li><a href="https://www.instagram.com/lamati_rest/" target="_blank" rel="noopener noreferrer">Bebidas</a></li>
+          <li><a href="https://www.instagram.com/lamati_rest/" target="_blank" rel="noopener noreferrer">Adicionales</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Pedir</h4>
+        <ul>
+          <li><a href="https://www.instagram.com/lamati_rest/" target="_blank" rel="noopener noreferrer">Rappi</a></li>
+          <li><a href="https://www.instagram.com/lamati_rest/" target="_blank" rel="noopener noreferrer">PedidosYa</a></li>
+          <li><a href="https://www.instagram.com/lamati_rest/" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legales</h4>
+        <ul>
+          <li><a href="https://www.instagram.com/lamati_rest/" target="_blank" rel="noopener noreferrer">Privacidad</a></li>
+          <li><a href="https://www.instagram.com/lamati_rest/" target="_blank" rel="noopener noreferrer">Términos</a></li>
+          <li><a href="https://www.instagram.com/lamati_rest/" target="_blank" rel="noopener noreferrer">Cookies</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Redes</h4>
+        <ul>
+          <li><a href="https://www.instagram.com/lamati_rest/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://www.instagram.com/lamati_rest/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+          <li><a href="https://www.instagram.com/lamati_rest/" target="_blank" rel="noopener noreferrer">TikTok</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2024 La Mati Salchipapería. Todos los derechos reservados.</p>
+      <div class="social-row">
+        <a href="https://www.instagram.com/lamati_rest/" target="_blank" rel="noopener noreferrer" class="social-btn">ig</a>
+        <a href="https://www.instagram.com/lamati_rest/" target="_blank" rel="noopener noreferrer" class="social-btn">fb</a>
+        <a href="https://www.instagram.com/lamati_rest/" target="_blank" rel="noopener noreferrer" class="social-btn">tt</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.dot').forEach((d, i, all) => {
+      d.addEventListener('click', () => {
+        all.forEach(x => x.classList.remove('active'));
+        d.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
+
