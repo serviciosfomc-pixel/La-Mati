@@ -651,6 +651,29 @@
     .prod-tag.alt { background: #fff; color: #000; box-shadow: 0 2px 0 rgba(255,255,255,0.4); }
     .prod-tag.hot { background: #FF3B2F; color: #fff; box-shadow: 0 2px 0 #B5170D; }
 
+    /* Tarjeta premium — Francesa Especial (la más cara) */
+    .prod-card--top {
+      border: 2px solid var(--gold);
+      box-shadow: 0 0 0 1px rgba(255,184,0,0.22), var(--shadow-card);
+    }
+    .prod-card--top:hover {
+      border-color: var(--gold-2);
+      box-shadow:
+        0 0 0 3px rgba(255,184,0,0.35),
+        0 14px 40px rgba(255,184,0,0.28),
+        0 6px 20px rgba(0,0,0,0.55);
+    }
+    .prod-card--top .prod-tag {
+      background: linear-gradient(135deg, var(--gold-2) 0%, var(--gold) 55%, var(--amber) 100%);
+      letter-spacing: 0.20em;
+      padding: 6px 14px;
+      box-shadow: 0 3px 10px rgba(255,184,0,0.45), 0 2px 0 var(--amber);
+    }
+    .prod-card--top .prod-price {
+      font-size: 1.4rem;
+      text-shadow: 0 0 20px rgba(255,184,0,0.35);
+    }
+
     .prod-img-wrap {
       position: relative;
       aspect-ratio: 4/3;
@@ -1694,8 +1717,8 @@
           <img src="Platos transparentes/5.png" alt="Salchipapa Francesa">
           <div class="slide-price">
             <small>SOLO POR</small>
-            <strong>S/16.00</strong>
-            <small>Con queso</small>
+            <strong>S/18.00</strong>
+            <small>Premium</small>
           </div>
         </div>
       </article>
@@ -1737,6 +1760,138 @@
     </div>
   </section>
 
+  <!-- ════════════ DESTACADOS ════════════ -->
+  <section class="featured" id="combos">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="section-eyebrow">Lo más pedido</span>
+          <h2 class="section-title">Productos <em>estrella</em></h2>
+        </div>
+        <p>Las salchipapas favoritas de Arequipa. Hechas al momento con papa nativa y salsas artesanales.</p>
+      </div>
+
+      <div class="prod-grid">
+
+        <article class="prod-card">
+          <span class="prod-tag">Top</span>
+          <div class="prod-img-wrap"><img src="Platos de La Mati/clasica.jpg" alt="Salchipapa Clásica"></div>
+          <div class="prod-body">
+            <h4>Salchipapa Clásica</h4>
+            <p>Papa nativa 350g y salchicha Frankfürt. El sabor de toda la vida.</p>
+            <div class="prod-foot">
+              <span class="prod-price">S/. 13.00</span>
+              <a href="#" class="btn btn-primary btn-sm" data-product="clasica">Añadir</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="prod-card">
+          <span class="prod-tag hot">Nuevo</span>
+          <div class="prod-img-wrap"><img src="Platos de La Mati/Salchipapa Royal Especial.png" alt="SalchiRoyal Especial"></div>
+          <div class="prod-body">
+            <h4>SalchiRoyal Especial</h4>
+            <p>Papa nativa, salchicha, pollo desmenuzado y huevo frito.</p>
+            <div class="prod-foot">
+              <span class="prod-price">S/. 15.50</span>
+              <a href="#" class="btn btn-primary btn-sm" data-product="royal">Añadir</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="prod-card">
+          <span class="prod-tag alt">Favorita</span>
+          <div class="prod-img-wrap"><img src="Platos de La Mati/Salchipapa Americana.png" alt="Salchipapa Americana"></div>
+          <div class="prod-body">
+            <h4>Americana</h4>
+            <p>Papa nativa, salchicha Frankfürt, tocino y huevo frito.</p>
+            <div class="prod-foot">
+              <span class="prod-price">S/. 15.00</span>
+              <a href="#" class="btn btn-primary btn-sm" data-product="americana">Añadir</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="prod-card">
+          <div class="prod-img-wrap"><img src="Platos de La Mati/Salchipollo.png" alt="Salchipollo"></div>
+          <div class="prod-body">
+            <h4>Salchipollo</h4>
+            <p>Papa nativa, salchicha Frankfürt y pollo desmenuzado.</p>
+            <div class="prod-foot">
+              <span class="prod-price">S/. 14.50</span>
+              <a href="#" class="btn btn-primary btn-sm" data-product="pollo">Añadir</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="prod-card">
+          <div class="prod-img-wrap"><img src="Platos de La Mati/Salchipapa Arequipe%C3%B1a.png" alt="Salchipapa Arequipeña"></div>
+          <div class="prod-body">
+            <h4>Arequipeña</h4>
+            <p>Papa nativa 350g y salchicha arequipeña dorada al sartén.</p>
+            <div class="prod-foot">
+              <span class="prod-price">S/. 14.00</span>
+              <a href="#" class="btn btn-primary btn-sm" data-product="arequip">Añadir</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="prod-card prod-card--top">
+          <span class="prod-tag">★ TOP</span>
+          <div class="prod-img-wrap"><img src="Platos de La Mati/Salchipapa Francesa.png" alt="Salchipapa Francesa Especial"></div>
+          <div class="prod-body">
+            <h4>Francesa Especial</h4>
+            <p>Papa nativa, salchicha, pollo desmenuzado y queso derretido. Nuestro plato premium.</p>
+            <div class="prod-foot">
+              <span class="prod-price">S/. 18.00</span>
+              <a href="#" class="btn btn-primary btn-sm" data-product="francesa">Añadir</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="prod-card">
+          <span class="prod-tag">Mixta</span>
+          <div class="prod-img-wrap"><img src="Platos de La Mati/Salchipapa Andina.png" alt="Salchipapa Andina"></div>
+          <div class="prod-body">
+            <h4>Andina</h4>
+            <p>Papa nativa, salchicha, chorizo finas hierbas y pollo.</p>
+            <div class="prod-foot">
+              <span class="prod-price">S/. 16.50</span>
+              <a href="#" class="btn btn-primary btn-sm" data-product="andina">Añadir</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="prod-card">
+          <span class="prod-tag alt">Familiar</span>
+          <div class="prod-img-wrap"><img src="Platos de La Mati/Combo familiar.png" alt="Combo Familia Mati — 4 salchipapas a elección"></div>
+          <div class="prod-body">
+            <h4>Combo Familia Mati</h4>
+            <p>4 salchipapas, 4 botellas de chicha morada 1 litro y pack de 6 salsas.</p>
+            <div class="prod-foot">
+              <span class="prod-price">S/. 64.90</span>
+              <a href="#" class="btn btn-primary btn-sm" data-product="combo">Añadir</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="prod-card featured-wide">
+          <span class="prod-tag">100% Natural</span>
+          <div class="prod-img-wrap"><img src="image.png" alt="Chicha Morada La Mati — botella de 1 litro"></div>
+          <div class="prod-body">
+            <h4>Chicha Morada Casera</h4>
+            <p>Maíz morado, clavo de olor, canela, piña, manzana y membrillo. Sin químicos, sin colorantes — preparada cada mañana. Solo disponible en botella de 1 litro.</p>
+            <div class="prod-foot">
+              <span class="prod-price">S/. 4.00</span>
+              <a href="#" class="btn btn-primary btn-sm" data-product="chicha-1l">+ 1 L · S/. 4</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ════════════ CATEGORÍAS ════════════ -->
   <section class="categories" id="carta">
     <div class="wrap">
@@ -1752,12 +1907,12 @@
         <div class="cat-card">
           <div class="cat-circle"><img src="Platos transparentes/1.png" alt="Clásica"></div>
           <h3>Clásicas</h3>
-          <p>Desde S/. 12.50</p>
+          <p>Desde S/. 13.00</p>
         </div>
         <div class="cat-card">
           <div class="cat-circle"><img src="Platos transparentes/4.png" alt="Royal Especial"></div>
           <h3>Especiales</h3>
-          <p>Desde S/. 15.00</p>
+          <p>Desde S/. 15.50</p>
         </div>
         <div class="cat-card">
           <div class="cat-circle"><img src="Platos transparentes/7.png" alt="Andina"></div>
@@ -1767,12 +1922,12 @@
         <div class="cat-card">
           <div class="cat-circle"><img src="Platos transparentes/5.png" alt="Francesa con queso"></div>
           <h3>Con Queso</h3>
-          <p>Desde S/. 16.00</p>
+          <p>Desde S/. 18.00</p>
         </div>
         <div class="cat-card">
           <div class="cat-circle"><img src="Platos transparentes/2.png" alt="Salchipollo"></div>
           <h3>Con Pollo</h3>
-          <p>Desde S/. 13.00</p>
+          <p>Desde S/. 14.50</p>
         </div>
       </div>
     </div>
@@ -1801,141 +1956,6 @@
     </div>
   </div>
 
-  <!-- ════════════ DESTACADOS ════════════ -->
-  <section class="featured" id="combos">
-    <div class="wrap">
-      <div class="section-head">
-        <div>
-          <span class="section-eyebrow">Lo más pedido</span>
-          <h2 class="section-title">Productos <em>estrella</em></h2>
-        </div>
-        <p>Las salchipapas favoritas de Arequipa. Hechas al momento con papa nativa y salsas artesanales.</p>
-      </div>
-
-      <div class="prod-grid">
-
-        <article class="prod-card">
-          <span class="prod-tag">Top</span>
-          <div class="prod-img-wrap"><img src="Platos de La Mati/clasica.jpg" alt="Salchipapa Clásica"></div>
-          <div class="prod-body">
-            <h4>Salchipapa Clásica</h4>
-            <p>Papa nativa 350g y salchicha Frankfürt. El sabor de toda la vida.</p>
-            <div class="prod-foot">
-              <span class="prod-price">S/. 12.50</span>
-              <a href="#" class="btn btn-primary btn-sm" data-product="clasica">Añadir</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="prod-card">
-          <span class="prod-tag hot">Nuevo</span>
-          <div class="prod-img-wrap"><img src="Platos de La Mati/Salchipapa Royal Especial.png" alt="SalchiRoyal Especial"></div>
-          <div class="prod-body">
-            <h4>SalchiRoyal Especial</h4>
-            <p>Papa nativa, salchicha, pollo desmenuzado y huevo frito.</p>
-            <div class="prod-foot">
-              <span class="prod-price">S/. 15.00</span>
-              <a href="#" class="btn btn-primary btn-sm" data-product="royal">Añadir</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="prod-card">
-          <span class="prod-tag alt">Favorita</span>
-          <div class="prod-img-wrap"><img src="Platos de La Mati/Salchipapa Americana.png" alt="Salchipapa Americana"></div>
-          <div class="prod-body">
-            <h4>Americana</h4>
-            <p>Papa nativa, salchicha Frankfürt, tocino y huevo frito.</p>
-            <div class="prod-foot">
-              <span class="prod-price">S/. 15.00</span>
-              <a href="#" class="btn btn-primary btn-sm" data-product="americana">Añadir</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="prod-card">
-          <div class="prod-img-wrap"><img src="Platos de La Mati/Salchipollo.png" alt="Salchipollo"></div>
-          <div class="prod-body">
-            <h4>Salchipollo</h4>
-            <p>Papa nativa, salchicha Frankfürt y pollo desmenuzado.</p>
-            <div class="prod-foot">
-              <span class="prod-price">S/. 13.00</span>
-              <a href="#" class="btn btn-primary btn-sm" data-product="pollo">Añadir</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="prod-card">
-          <div class="prod-img-wrap"><img src="Platos de La Mati/Salchipapa Arequipe%C3%B1a.png" alt="Salchipapa Arequipeña"></div>
-          <div class="prod-body">
-            <h4>Arequipeña</h4>
-            <p>Papa nativa 350g y salchicha arequipeña dorada al sartén.</p>
-            <div class="prod-foot">
-              <span class="prod-price">S/. 13.00</span>
-              <a href="#" class="btn btn-primary btn-sm" data-product="arequip">Añadir</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="prod-card">
-          <span class="prod-tag">Con queso</span>
-          <div class="prod-img-wrap"><img src="Platos de La Mati/Salchipapa Francesa.png" alt="Salchipapa Francesa"></div>
-          <div class="prod-body">
-            <h4>Francesa Especial</h4>
-            <p>Papa nativa, salchicha, pollo desmenuzado y queso derretido.</p>
-            <div class="prod-foot">
-              <span class="prod-price">S/. 16.00</span>
-              <a href="#" class="btn btn-primary btn-sm" data-product="francesa">Añadir</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="prod-card">
-          <span class="prod-tag">Mixta</span>
-          <div class="prod-img-wrap"><img src="Platos de La Mati/Salchipapa Andina.png" alt="Salchipapa Andina"></div>
-          <div class="prod-body">
-            <h4>Andina</h4>
-            <p>Papa nativa, salchicha, chorizo finas hierbas y pollo.</p>
-            <div class="prod-foot">
-              <span class="prod-price">S/. 16.50</span>
-              <a href="#" class="btn btn-primary btn-sm" data-product="andina">Añadir</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="prod-card">
-          <span class="prod-tag alt">Familiar</span>
-          <div class="prod-img-wrap"><img src="Platos de La Mati/Combo familiar.png" alt="Combo Familia Mati — 4 salchipapas a elección"></div>
-          <div class="prod-body">
-            <h4>Combo Familia Mati</h4>
-            <p>4 salchipapas, 4 botellas de chicha morada 480 ml y pack de 6 salsas.</p>
-            <div class="prod-foot">
-              <span class="prod-price">S/. 64.90</span>
-              <a href="#" class="btn btn-primary btn-sm" data-product="combo">Añadir</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="prod-card featured-wide">
-          <span class="prod-tag">100% Natural</span>
-          <div class="prod-img-wrap"><img src="Platos de La Mati/CHICHA MORADA.jpeg" alt="Chicha Morada La Mati — botellas de 480 ml y 1 litro"></div>
-          <div class="prod-body">
-            <h4>Chicha Morada Casera</h4>
-            <p>Maíz morado, clavo de olor, canela, piña, manzana y membrillo. Sin químicos, sin colorantes — preparada cada mañana.</p>
-            <div class="prod-foot">
-              <span class="prod-price">Desde S/. 2.00</span>
-              <div class="prod-foot-variants">
-                <a href="#" class="btn btn-primary btn-sm" data-product="chicha-480">+ 480 ml · S/. 2</a>
-                <a href="#" class="btn btn-primary btn-sm" data-product="chicha-1l">+ 1 L · S/. 4</a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
   <!-- ════════════ BUCKET FAMILIAR ════════════ -->
   <section class="bucket">
     <div class="wrap">
@@ -1949,7 +1969,7 @@
           <p>Pensado para reuniones, partidos o el almuerzo del domingo. Llévate 4 salchipapas a elección con todas nuestras salsas artesanales.</p>
           <ul class="bucket-features">
             <li><span class="check">✓</span> 4 salchipapas grandes a elección</li>
-            <li><span class="check">✓</span> 4 botellas de chicha morada 480 ml</li>
+            <li><span class="check">✓</span> 4 botellas de chicha morada 1 litro</li>
             <li><span class="check">✓</span> Pack de 6 salsas artesanales</li>
             <li><span class="check">✓</span> Listo en 30 min, llega caliente</li>
           </ul>
@@ -2374,16 +2394,15 @@
       const WHATSAPP  = '51980912958';
 
       const PRODUCTS = {
-        clasica:    { name: 'Salchipapa Clásica',    price: 12.50, img: 'Platos de La Mati/clasica.jpg' },
-        royal:      { name: 'SalchiRoyal Especial',  price: 15.00, img: 'Platos transparentes/4.png' },
+        clasica:    { name: 'Salchipapa Clásica',    price: 13.00, img: 'Platos de La Mati/clasica.jpg' },
+        royal:      { name: 'SalchiRoyal Especial',  price: 15.50, img: 'Platos transparentes/4.png' },
         americana:  { name: 'Salchipapa Americana',  price: 15.00, img: 'Platos transparentes/6.png' },
-        pollo:      { name: 'Salchipollo',           price: 13.00, img: 'Platos transparentes/2.png' },
-        arequip:    { name: 'Salchipapa Arequipeña', price: 13.00, img: 'Platos transparentes/3.png' },
-        francesa:   { name: 'Salchipapa Francesa',   price: 16.00, img: 'Platos transparentes/5.png' },
+        pollo:      { name: 'Salchipollo',           price: 14.50, img: 'Platos transparentes/2.png' },
+        arequip:    { name: 'Salchipapa Arequipeña', price: 14.00, img: 'Platos transparentes/3.png' },
+        francesa:   { name: 'Salchipapa Francesa',   price: 18.00, img: 'Platos transparentes/5.png' },
         andina:     { name: 'Salchipapa Andina',     price: 16.50, img: 'Platos transparentes/7.png' },
         combo:      { name: 'Combo Familia Mati',    price: 64.90, img: 'Platos de La Mati/Combo familiar.png' },
-        'chicha-480':{ name: 'Chicha Morada 480 ml', price: 2.00,  img: 'Platos de La Mati/CHICHA MORADA.jpeg' },
-        'chicha-1l': { name: 'Chicha Morada 1 L',    price: 4.00,  img: 'Platos de La Mati/CHICHA MORADA.jpeg' },
+        'chicha-1l': { name: 'Chicha Morada 1 L',    price: 4.00,  img: 'image.png' },
         'top-frank':   { name: 'Topping: Salchicha Frankfürt',   price: 3.99, img: 'logo-transparent.png' },
         'top-papa':    { name: 'Topping: Papa Nativa',           price: 3.99, img: 'logo-transparent.png' },
         'top-chorizo': { name: 'Topping: Chorizo Finas Hierbas', price: 3.99, img: 'logo-transparent.png' },

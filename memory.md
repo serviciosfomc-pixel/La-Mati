@@ -78,6 +78,44 @@
 
 ## Bitácora de cambios
 
+### 2026-05-24 — v24: Nuevos precios + Francesa TOP + reorden secciones + chicha solo 1L
+- **Trigger:** Cuatro ajustes pedidos por el usuario:
+  1. Actualización de precios de platos.
+  2. Francesa ahora es el plato más caro → badge "★ TOP" + diseño premium (borde dorado, glow intensificado).
+  3. Sección Productos Estrella sube (va después del Hero); Categorías Destacadas baja (va después de Productos, junto a la venta de platos).
+  4. Solo hay chicha morada de 1 litro — se elimina la variante 480 ml en toda la página.
+- **Nuevos precios:**
+  | Plato | Antes | Ahora |
+  |-------|-------|-------|
+  | Clásica | S/. 12.50 | S/. 13.00 |
+  | SalchiRoyal Especial | S/. 15.00 | S/. 15.50 |
+  | Americana | S/. 15.00 | S/. 15.00 (sin cambio) |
+  | Salchipollo | S/. 13.00 | S/. 14.50 |
+  | Arequipeña | S/. 13.00 | S/. 14.00 |
+  | Francesa Especial | S/. 16.00 | S/. 18.00 |
+  | Andina | S/. 16.50 | S/. 16.50 (sin cambio) |
+- **Francesa TOP:**
+  - Clase `.prod-card--top` nueva en CSS: borde gold 2px, box-shadow glow ámbar en hover, `prod-price` más grande con text-shadow dorado.
+  - Badge cambiado de "Con queso" → **"★ TOP"** con gradiente gold-2→gold→amber.
+  - Descripción actualizada: "Nuestro plato premium." añadido al final.
+  - Hero slide 2 (Francesa): precio `S/16.00` → `S/18.00`, label "Con queso" → "Premium".
+- **Reorden de secciones (nuevo orden):**
+  1. Hero carrusel
+  2. **Productos Estrella** (subió desde posición 4 → posición 2)
+  3. **Categorías Destacadas** (bajó desde posición 2 → posición 3, junto a productos)
+  4. Banner Club La Mati
+  5. Bucket Familiar
+  6. Toppings, Delivery, Salsas, etc.
+- **Chicha morada — solo 1 litro:**
+  - Eliminado botón "+ 480 ml · S/. 2" y variante `chicha-480` del JS PRODUCTS.
+  - Precio de la card: "Desde S/. 2.00" → **S/. 4.00**.
+  - Descripción actualizada: "Solo disponible en botella de 1 litro."
+  - Alt text actualizado (quitada mención a 480 ml).
+  - Bucket Familiar: "4 botellas de chicha morada 480 ml" → **"4 botellas de chicha morada 1 litro"**.
+  - Combo Familia Mati card: mismo cambio.
+- **Categorías actualizadas (precios):** Clásicas S/13 · Especiales S/15.50 · Con Queso S/18 · Con Pollo S/14.50.
+- **Archivos modificados:** `index.html`, `memory.md`.
+
 ### 2026-04-28 — v23: Chicha visible + Toppings + Honey Mustard
 - **Trigger:** Tres ajustes:
   1. La imagen de la chicha morada ocultaba las etiquetas laterales (maíz morado, piña, canela…) por usar `object-fit: cover`. Pidió "que esté un poco más atrás" para que se vean.
