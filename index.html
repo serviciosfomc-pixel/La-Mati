@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -414,13 +414,34 @@
       gap: 18px;
     }
     .cat-grid--salsas .cat-card {
-      flex: 0 0 calc(14.28% - 18px);
-      min-width: 160px;
-      max-width: 220px;
+      flex: 0 0 calc(20% - 18px);
+      min-width: 180px;
+      max-width: 250px;
     }
-    /* Imagen de salsa: cover para que llene el círculo */
     .cat-circle--sauce img {
       object-fit: cover;
+    }
+    .cat-desc {
+      font-size: 0.76rem;
+      color: var(--muted);
+      line-height: 1.55;
+      margin: 6px 0 10px;
+    }
+    .cat-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      justify-content: center;
+    }
+    .cat-chips span {
+      font-size: 0.65rem;
+      background: rgba(255,184,0,0.08);
+      border: 1px solid rgba(255,184,0,0.28);
+      color: var(--gold);
+      padding: 3px 8px;
+      border-radius: 20px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
     }
     .cat-card {
       background: var(--black);
@@ -878,128 +899,6 @@
       font-size: 0.78rem;
     }
 
-    /* ════════════ SALSAS (carrusel) ════════════ */
-    .sauces {
-      padding: 100px 0;
-      background: rgba(13, 13, 13, 0.55);
-    }
-    .sauces-head {
-      text-align: center;
-      max-width: 720px;
-      margin: 0 auto 50px;
-    }
-    .sauces-head p {
-      color: var(--muted);
-      font-size: 0.96rem;
-      margin-top: 14px;
-      max-width: 520px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .sauces-carousel {
-      position: relative;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 30px 70px rgba(0,0,0,0.55);
-      border: 1px solid var(--border);
-    }
-    .sauces-track {
-      display: flex;
-      width: 100%;
-      transition: transform 0.7s cubic-bezier(0.6, 0.05, 0.2, 1);
-    }
-    .sauce-slide {
-      flex: 0 0 100%;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 540px;
-      background: var(--card);
-    }
-    .sauce-text {
-      padding: 60px 56px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background:
-        radial-gradient(circle at 80% 30%, rgba(255,184,0,0.08), transparent 55%),
-        linear-gradient(135deg, var(--card) 0%, var(--dark) 100%);
-    }
-    .sauce-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(255,184,0,0.12);
-      border: 1px solid rgba(255,184,0,0.42);
-      color: var(--gold);
-      padding: 7px 14px;
-      border-radius: 100px;
-      font-size: 0.7rem;
-      font-weight: 800;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      width: fit-content;
-      margin-bottom: 22px;
-    }
-    .sauce-tag::before {
-      content: "";
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: var(--gold);
-      box-shadow: 0 0 0 4px rgba(255,184,0,0.18);
-    }
-    .sauce-text h3 {
-      font-size: clamp(2.4rem, 4.6vw, 4rem);
-      font-weight: 900;
-      line-height: 0.94;
-      letter-spacing: -0.025em;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-    }
-    .sauce-text h3 span {
-      display: block;
-      color: var(--gold);
-    }
-    .sauce-text p {
-      color: var(--muted);
-      font-size: 1rem;
-      line-height: 1.7;
-      margin-bottom: 28px;
-      max-width: 440px;
-    }
-    .sauce-ingredients {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 30px;
-    }
-    .sauce-ingredients span {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid var(--border);
-      color: rgba(255,255,255,0.78);
-      font-size: 0.74rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      padding: 6px 12px;
-      border-radius: 6px;
-    }
-    .sauce-img {
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(ellipse at 50% 50%, rgba(255,184,0,0.08), transparent 70%),
-        var(--black);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 28px;
-    }
-    .sauce-img img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      border-radius: 14px;
-      box-shadow: 0 24px 60px rgba(0,0,0,0.7);
-    }
 
     /* ════════════ TOPPINGS ════════════ */
     .toppings {
@@ -1589,9 +1488,6 @@
       .promo-banner .pb-img::before { display: none; }
       .promo-banner h3 .price { transform: rotate(0); }
       .bucket-grid, .app-grid { grid-template-columns: 1fr; gap: 36px; }
-      .sauce-slide { grid-template-columns: 1fr; min-height: auto; }
-      .sauce-text { padding: 44px 36px 28px; }
-      .sauce-img { aspect-ratio: 4/3; padding: 20px; }
       .foot-grid { grid-template-columns: 1.5fr 1fr 1fr 1fr; }
     }
     @media (max-width: 760px) {
@@ -1626,7 +1522,7 @@
       .promo-banner .pb-text { padding: 30px 24px 28px; }
       .promo-banner .pb-tag { top: 14px; right: 14px; padding: 10px 14px; }
       .promo-banner .pb-tag strong { font-size: 1.2rem; }
-      .categories, .featured, .bucket, .toppings, .sauces, .app-section { padding: 60px 0; }
+      .categories, .featured, .bucket, .toppings, .app-section { padding: 60px 0; }
       .toppings-grid { grid-template-columns: 1fr; gap: 0; max-width: 480px; }
       .topping-item { padding: 14px 4px; gap: 14px; }
       .topping-price { font-size: 1.25rem; min-width: 78px; }
@@ -1649,7 +1545,7 @@
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
       }
-      .hero-track, .sauces-track { transition: none; }
+      .hero-track { transition: none; }
       .bg-pattern, .bg-glow { animation: none !important; }
     }
   </style>
@@ -1924,51 +1820,71 @@
           <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/WhatsApp Image 2026-05-27 at 12.50.23 AM.jpeg" alt="Ají Mati"></div>
           <h3>Ají Mati</h3>
           <p>Nuestra firma</p>
+          <p class="cat-desc">Ají amarillo cremoso con mayonesa y queso fresco. Picante medio que combina con todo.</p>
+          <div class="cat-chips"><span>Ají amarillo</span><span>Mayonesa</span><span>Queso</span></div>
         </div>
         <div class="cat-card">
           <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/WhatsApp Image 2026-05-27 at 12.50.21 AM (3).jpeg" alt="Salsa de la Casa"></div>
           <h3>De la Casa</h3>
           <p>La más pedida</p>
+          <p class="cat-desc">Queso fundido con leche, ajo, cebolla caramelizada y pimentón. La favorita de Arequipa.</p>
+          <div class="cat-chips"><span>Queso fundido</span><span>Ajo</span><span>Pimentón</span></div>
         </div>
         <div class="cat-card">
           <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/WhatsApp Image 2026-05-27 at 12.50.23 AM (2).jpeg" alt="Salsa de la Casa 2"></div>
           <h3>De la Casa 2</h3>
           <p>Mayonesa y queso</p>
+          <p class="cat-desc">Mayonesa casera con pimentón y queso fundido. Cremosa con personalidad propia.</p>
+          <div class="cat-chips"><span>Mayonesa</span><span>Pimentón</span><span>Queso</span></div>
         </div>
         <div class="cat-card">
           <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/WhatsApp Image 2026-05-27 at 12.50.22 AM.jpeg" alt="Mayonesa Casera"></div>
           <h3>Mayonesa</h3>
           <p>Hecha al momento</p>
+          <p class="cat-desc">Preparada cada mañana con huevo fresco, aceite y limón. Sin químicos, sin conservantes.</p>
+          <div class="cat-chips"><span>Huevo fresco</span><span>Aceite</span><span>Limón</span></div>
         </div>
         <div class="cat-card">
           <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/WhatsApp Image 2026-05-27 at 12.50.22 AM (2).jpeg" alt="Ketchup"></div>
           <h3>Ketchup</h3>
           <p>Para los clásicos</p>
+          <p class="cat-desc">Equilibrio perfecto entre dulce y ácido. El acompañante de toda la vida.</p>
+          <div class="cat-chips"><span>Tomate</span><span>Especias</span><span>Vinagre</span></div>
         </div>
         <div class="cat-card">
           <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/WhatsApp Image 2026-05-27 at 12.50.22 AM (1).jpeg" alt="Mostaza"></div>
           <h3>Mostaza</h3>
-          <p>Tradicional</p>
+          <p>Suave picor</p>
+          <p class="cat-desc">Granos seleccionados con sabor cuidado. Va perfecto con la salchicha Frankfürt.</p>
+          <div class="cat-chips"><span>Mostaza en grano</span><span>Vinagre</span><span>Sal</span></div>
         </div>
         <div class="cat-card">
           <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/WhatsApp Image 2026-05-27 at 12.50.21 AM.jpeg" alt="Salsa Tártara"></div>
           <h3>Tártara</h3>
           <p>Cremosa con carácter</p>
+          <p class="cat-desc">Mayonesa casera con pepinillos, alcaparras y hierbas frescas. Untuosa y distinta.</p>
+          <div class="cat-chips"><span>Mayonesa</span><span>Pepinillos</span><span>Alcaparras</span></div>
         </div>
         <div class="cat-card">
           <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/WhatsApp Image 2026-05-27 at 12.50.21 AM (1).jpeg" alt="Honey Mustard"></div>
           <h3>Honey Mustard</h3>
-          <p>Nueva</p>
+          <p>Nueva ★</p>
+          <p class="cat-desc">Mostaza con miel de abeja. Equilibrio entre dulce, ácido y suave picor. Nuevo ingreso.</p>
+          <div class="cat-chips"><span>Mostaza</span><span>Miel de abeja</span><span>Vinagre</span></div>
         </div>
         <div class="cat-card">
           <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/WhatsApp Image 2026-05-27 at 12.50.20 AM.jpeg" alt="Salsa de Palta"></div>
           <h3>Salsa de Palta</h3>
           <p>Con ajo y limón</p>
+          <p class="cat-desc">Palta fresca con mayonesa, ajo y limón. Cremosa, fresca y ligera.</p>
+          <div class="cat-chips"><span>Palta</span><span>Mayonesa</span><span>Limón</span></div>
         </div>
         <div class="cat-card">
           <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/WhatsApp Image 2026-05-27 at 12.50.23 AM (1).jpeg" alt="Salsa de Aceituna"></div>
           <h3>Aceituna</h3>
           <p>Cremosa especial</p>
+          <p class="cat-desc">Salsa cremosa a base de aceituna negra. Intensa, diferente, memorable.</p>
+          <div class="cat-chips"><span>Aceituna</span><span>Mayonesa</span><span>Ajo</span></div>
         </div>
       </div>
     </div>
@@ -2072,169 +1988,6 @@
     </div>
   </section>
 
-  <!-- ════════════ SALSAS (carrusel) ════════════ -->
-  <section class="sauces" id="salsas">
-    <div class="wrap">
-      <div class="sauces-head">
-        <span class="section-eyebrow">Hechas en casa</span>
-        <h2 class="section-title">Las 6 salsas que <em>cambian</em> tu salchipapa</h2>
-        <p>Recetas propias preparadas cada mañana. Sin conservantes, sin químicos — todo sabor.</p>
-      </div>
-
-      <div class="sauces-carousel">
-        <div class="sauces-track" id="sauces-track">
-
-          <!-- 1. Ají Mati -->
-          <article class="sauce-slide">
-            <div class="sauce-text">
-              <span class="sauce-tag">Salsa estrella</span>
-              <h3>Ají <span>Mati</span></h3>
-              <p>Nuestra firma. Ají amarillo cremoso con mayonesa, aceite y queso fresco. Picante medio que pega bien con todo lo que tenga papa.</p>
-              <div class="sauce-ingredients">
-                <span>Ají amarillo</span>
-                <span>Mayonesa casera</span>
-                <span>Queso</span>
-                <span>Aceite</span>
-              </div>
-              <a href="#combos" class="btn btn-primary btn-lg">Pídela con tu salchipapa →</a>
-            </div>
-            <div class="sauce-img">
-              <img src="Salsas de La Mati/Aji mati.jpg" alt="Ají Mati — La Mati">
-            </div>
-          </article>
-
-          <!-- 2. Salsa de la Casa -->
-          <article class="sauce-slide">
-            <div class="sauce-text">
-              <span class="sauce-tag">La más pedida</span>
-              <h3>Salsa de<br><span>la Casa</span></h3>
-              <p>Queso fundido con leche, un toque de ajo, cebolla caramelizada y pimentón. Cremosa, intensa, con personalidad. La favorita de Arequipa.</p>
-              <div class="sauce-ingredients">
-                <span>Queso fundido</span>
-                <span>Leche</span>
-                <span>Ajo</span>
-                <span>Cebolla caramelizada</span>
-                <span>Pimentón</span>
-              </div>
-              <a href="#combos" class="btn btn-primary btn-lg">Pídela con tu salchipapa →</a>
-            </div>
-            <div class="sauce-img">
-              <img src="Salsas de La Mati/salsa de la casa.jpg" alt="Salsa de la Casa — La Mati">
-            </div>
-          </article>
-
-          <!-- 3. Mayonesa -->
-          <article class="sauce-slide">
-            <div class="sauce-text">
-              <span class="sauce-tag">Hecha al momento</span>
-              <h3>Mayonesa<br><span>casera</span></h3>
-              <p>Preparada cada mañana con huevo fresco, aceite y limón. Cremosa, suave, sin químicos ni industriales. La base perfecta.</p>
-              <div class="sauce-ingredients">
-                <span>Huevo fresco</span>
-                <span>Aceite</span>
-                <span>Limón</span>
-              </div>
-              <a href="#combos" class="btn btn-primary btn-lg">Pídela con tu salchipapa →</a>
-            </div>
-            <div class="sauce-img">
-              <img src="Salsas de La Mati/Mayonesa.jpg" alt="Mayonesa casera — La Mati">
-            </div>
-          </article>
-
-          <!-- 4. Ketchup -->
-          <article class="sauce-slide">
-            <div class="sauce-text">
-              <span class="sauce-tag">Para los clásicos</span>
-              <h3>Ketchup</h3>
-              <p>El acompañante de toda la vida. Equilibrio perfecto entre dulce y ácido para que cada bocado sepa como debe.</p>
-              <div class="sauce-ingredients">
-                <span>Tomate</span>
-                <span>Especias</span>
-                <span>Vinagre</span>
-              </div>
-              <a href="#combos" class="btn btn-primary btn-lg">Pídela con tu salchipapa →</a>
-            </div>
-            <div class="sauce-img">
-              <img src="Salsas de La Mati/Ketchup.jpg" alt="Ketchup — La Mati">
-            </div>
-          </article>
-
-          <!-- 5. Mostaza -->
-          <article class="sauce-slide">
-            <div class="sauce-text">
-              <span class="sauce-tag">Suave picor</span>
-              <h3>Mostaza</h3>
-              <p>Granos seleccionados con sabor cuidado. Va perfecto con la salchicha Frankfürt y el toque salado de la papa nativa.</p>
-              <div class="sauce-ingredients">
-                <span>Mostaza en grano</span>
-                <span>Vinagre</span>
-                <span>Sal</span>
-              </div>
-              <a href="#combos" class="btn btn-primary btn-lg">Pídela con tu salchipapa →</a>
-            </div>
-            <div class="sauce-img">
-              <img src="Salsas de La Mati/Mostaza.jpg" alt="Mostaza — La Mati">
-            </div>
-          </article>
-
-          <!-- 6. Salsa Tártara -->
-          <article class="sauce-slide">
-            <div class="sauce-text">
-              <span class="sauce-tag">Cremosa con carácter</span>
-              <h3>Salsa<br><span>Tártara</span></h3>
-              <p>Mayonesa casera con pepinillos, alcaparras y hierbas frescas. Untuosa, sabrosa, distinta — para los que buscan algo más.</p>
-              <div class="sauce-ingredients">
-                <span>Mayonesa casera</span>
-                <span>Pepinillos</span>
-                <span>Alcaparras</span>
-                <span>Hierbas frescas</span>
-              </div>
-              <a href="#combos" class="btn btn-primary btn-lg">Pídela con tu salchipapa →</a>
-            </div>
-            <div class="sauce-img">
-              <img src="Salsas de La Mati/Salsa Tartara.jpg" alt="Salsa Tártara — La Mati">
-            </div>
-          </article>
-
-          <!-- 7. Honey Mustard (nuevo ingreso) -->
-          <article class="sauce-slide">
-            <div class="sauce-text">
-              <span class="sauce-tag">Nuevo ingreso</span>
-              <h3>Honey<br><span>Mustard</span></h3>
-              <p>Mostaza clásica con miel de abeja. Un sabor algo fuera de lo común y deliciosa — equilibrio perfecto entre dulce, ácido y suave picor.</p>
-              <div class="sauce-ingredients">
-                <span>Mostaza clásica</span>
-                <span>Miel de abeja</span>
-                <span>Vinagre suave</span>
-              </div>
-              <a href="#combos" class="btn btn-primary btn-lg">Pídela con tu salchipapa →</a>
-            </div>
-            <div class="sauce-img">
-              <img src="Salsas de La Mati/Honey Mustard.jpg" alt="Honey Mustard — La Mati">
-            </div>
-          </article>
-
-        </div>
-
-        <button class="hero-arrow prev" aria-label="Salsa anterior" id="sauces-prev">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-        <button class="hero-arrow next" aria-label="Salsa siguiente" id="sauces-next">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-
-        <div class="hero-dots" id="sauces-dots">
-          <button class="on" aria-label="Salsa 1"></button>
-          <button aria-label="Salsa 2"></button>
-          <button aria-label="Salsa 3"></button>
-          <button aria-label="Salsa 4"></button>
-          <button aria-label="Salsa 5"></button>
-          <button aria-label="Salsa 6"></button>
-          <button aria-label="Salsa 7"></button>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- ════════════ JOIN US ════════════ -->
   <section class="join" id="trabaja">
@@ -2339,13 +2092,6 @@
       intervalMs: 6000,
     });
 
-    initCarousel({
-      trackId: 'sauces-track',
-      prevId:  'sauces-prev',
-      nextId:  'sauces-next',
-      dotsSel: '#sauces-dots button',
-      intervalMs: 7000,
-    });
 
     /* ── Nav active on scroll ── */
     (() => {
