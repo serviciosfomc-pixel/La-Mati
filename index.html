@@ -406,6 +406,22 @@
       grid-template-columns: repeat(5, 1fr);
       gap: 18px;
     }
+    /* Grid de 7 salsas: fila de 4 + fila de 3 centrada */
+    .cat-grid--salsas {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 18px;
+    }
+    .cat-grid--salsas .cat-card {
+      flex: 0 0 calc(14.28% - 18px);
+      min-width: 160px;
+      max-width: 220px;
+    }
+    /* Imagen de salsa: cover para que llene el círculo */
+    .cat-circle--sauce img {
+      object-fit: cover;
+    }
     .cat-card {
       background: var(--black);
       border: 2px solid var(--gold);
@@ -1892,42 +1908,67 @@
     </div>
   </section>
 
-  <!-- ════════════ CATEGORÍAS ════════════ -->
+  <!-- ════════════ CATEGORÍAS / SALSAS ════════════ -->
   <section class="categories" id="carta">
     <div class="wrap">
       <div class="section-head">
         <div>
-          <span class="section-eyebrow">Explora la carta</span>
-          <h2 class="section-title">Categorías <em>destacadas</em></h2>
+          <span class="section-eyebrow">Hechas en casa cada mañana</span>
+          <h2 class="section-title">Nuestras <em>salsas</em></h2>
         </div>
-        <p>Elige tu favorita: clásicas, especiales, combos para compartir y nuestras salsas artesanales.</p>
+        <p>10 salsas artesanales sin conservantes ni químicos. Elige la tuya y personaliza tu salchipapa.</p>
       </div>
 
-      <div class="cat-grid">
+      <div class="cat-grid cat-grid--salsas">
         <div class="cat-card">
-          <div class="cat-circle"><img src="Platos transparentes/1.png" alt="Clásica"></div>
-          <h3>Clásicas</h3>
-          <p>Desde S/. 13.00</p>
+          <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/WhatsApp Image 2026-05-27 at 12.50.23 AM.jpeg" alt="Ají Mati"></div>
+          <h3>Ají Mati</h3>
+          <p>Nuestra firma</p>
         </div>
         <div class="cat-card">
-          <div class="cat-circle"><img src="Platos transparentes/4.png" alt="Royal Especial"></div>
-          <h3>Especiales</h3>
-          <p>Desde S/. 15.50</p>
+          <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/WhatsApp Image 2026-05-27 at 12.50.21 AM (3).jpeg" alt="Salsa de la Casa"></div>
+          <h3>De la Casa</h3>
+          <p>La más pedida</p>
         </div>
         <div class="cat-card">
-          <div class="cat-circle"><img src="Platos transparentes/7.png" alt="Andina"></div>
-          <h3>Andina</h3>
-          <p>Desde S/. 16.50</p>
+          <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/WhatsApp Image 2026-05-27 at 12.50.23 AM (2).jpeg" alt="Salsa de la Casa 2"></div>
+          <h3>De la Casa 2</h3>
+          <p>Mayonesa y queso</p>
         </div>
         <div class="cat-card">
-          <div class="cat-circle"><img src="Platos transparentes/5.png" alt="Francesa con queso"></div>
-          <h3>Con Queso</h3>
-          <p>Desde S/. 18.00</p>
+          <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/WhatsApp Image 2026-05-27 at 12.50.22 AM.jpeg" alt="Mayonesa Casera"></div>
+          <h3>Mayonesa</h3>
+          <p>Hecha al momento</p>
         </div>
         <div class="cat-card">
-          <div class="cat-circle"><img src="Platos transparentes/2.png" alt="Salchipollo"></div>
-          <h3>Con Pollo</h3>
-          <p>Desde S/. 14.50</p>
+          <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/WhatsApp Image 2026-05-27 at 12.50.22 AM (2).jpeg" alt="Ketchup"></div>
+          <h3>Ketchup</h3>
+          <p>Para los clásicos</p>
+        </div>
+        <div class="cat-card">
+          <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/WhatsApp Image 2026-05-27 at 12.50.22 AM (1).jpeg" alt="Mostaza"></div>
+          <h3>Mostaza</h3>
+          <p>Tradicional</p>
+        </div>
+        <div class="cat-card">
+          <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/WhatsApp Image 2026-05-27 at 12.50.21 AM.jpeg" alt="Salsa Tártara"></div>
+          <h3>Tártara</h3>
+          <p>Cremosa con carácter</p>
+        </div>
+        <div class="cat-card">
+          <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/WhatsApp Image 2026-05-27 at 12.50.21 AM (1).jpeg" alt="Honey Mustard"></div>
+          <h3>Honey Mustard</h3>
+          <p>Nueva</p>
+        </div>
+        <div class="cat-card">
+          <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/WhatsApp Image 2026-05-27 at 12.50.20 AM.jpeg" alt="Salsa de Palta"></div>
+          <h3>Salsa de Palta</h3>
+          <p>Con ajo y limón</p>
+        </div>
+        <div class="cat-card">
+          <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/WhatsApp Image 2026-05-27 at 12.50.23 AM (1).jpeg" alt="Salsa de Aceituna"></div>
+          <h3>Aceituna</h3>
+          <p>Cremosa especial</p>
         </div>
       </div>
     </div>
