@@ -724,46 +724,49 @@
       background: var(--card-2);
     }
     /* Card destacada (Chicha Morada) — span 2 cols en desktop, full en tablet/mobile */
-    .prod-card.featured-wide {
-      grid-column: 1 / -1;
+    /* ── Chicha banner full-width ── */
+    .chicha-banner {
       display: grid;
       grid-template-columns: 1fr 1fr;
       min-height: 420px;
+      background: var(--card);
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
       overflow: hidden;
-      border-radius: 0;
-      border-left: none;
-      border-right: none;
-      /* full-bleed: rompe fuera del .wrap */
-      width: 100vw;
-      position: relative;
-      left: 50%;
-      transform: translateX(-50%);
     }
-    .prod-card.featured-wide .prod-img-wrap {
-      grid-column: 2;
-      grid-row: 1;
-      aspect-ratio: unset;
-      height: 100%;
-      background:
-        radial-gradient(ellipse 60% 80% at 50% 55%, rgba(0,0,0,0.25), transparent 70%),
-        var(--card-2);
-    }
-    .prod-card.featured-wide .prod-img-wrap img {
-      object-fit: contain;
-      object-position: center center;
-      padding: 16px;
-    }
-    .prod-card.featured-wide .prod-img-wrap::after { display: none; }
-    .prod-card.featured-wide .prod-body {
-      grid-column: 1;
-      grid-row: 1;
+    .chicha-body {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 36px 40px;
+      padding: 60px 72px;
     }
-    .prod-card.featured-wide h4 { font-size: 1.3rem; }
-    .prod-card.featured-wide p { font-size: 0.9rem; max-width: 380px; }
+    .chicha-body h4 {
+      font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+    }
+    .chicha-body p {
+      font-size: 0.96rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 440px;
+    }
+    .chicha-img {
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 60% 70% at 50% 55%, rgba(0,0,0,0.3), transparent 70%),
+        var(--card-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .chicha-img img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      padding: 20px;
+    }
     .prod-img-wrap::after {
       /* Sutil sombra superior para que el badge "Top/Nuevo" se lea sobre fotos claras */
       content: "";
@@ -1814,19 +1817,23 @@
           </div>
         </article>
 
-        <article class="prod-card featured-wide">
-          <div class="prod-body">
-            <span class="prod-tag" style="position:relative;top:auto;left:auto;margin-bottom:16px;display:inline-flex;">100% Natural</span>
-            <h4>Chicha Morada Casera</h4>
-            <p>Maíz morado, clavo de olor, canela, piña, manzana y membrillo. Sin químicos, sin colorantes — preparada cada mañana. Solo disponible en botella de 1 litro.</p>
-            <div class="prod-foot">
-              <span class="prod-price">S/. 4.00</span>
-              <a href="#" class="btn btn-primary btn-sm" data-product="chicha-1l">+ 1 L · S/. 4</a>
-            </div>
-          </div>
-          <div class="prod-img-wrap"><img src="FOTO DE CHICHA DE MAIZ MORADO DE 1 LITRO.png" alt="Chicha Morada La Mati — botella de 1 litro"></div>
-        </article>
 
+      </div>
+    </div>
+
+    <!-- chicha banner full-width fuera del wrap -->
+    <div class="chicha-banner">
+      <div class="chicha-body">
+        <span class="prod-tag" style="position:relative;top:auto;left:auto;margin-bottom:20px;display:inline-flex;width:fit-content;">100% Natural</span>
+        <h4>Chicha Morada Casera</h4>
+        <p>Maíz morado, clavo de olor, canela, piña, manzana y membrillo. Sin químicos, sin colorantes — preparada cada mañana. Solo disponible en botella de 1 litro.</p>
+        <div class="prod-foot" style="margin-top:28px;">
+          <span class="prod-price">S/. 4.00</span>
+          <a href="#" class="btn btn-primary btn-sm" data-product="chicha-1l">+ 1 L · S/. 4</a>
+        </div>
+      </div>
+      <div class="chicha-img">
+        <img src="FOTO DE CHICHA DE MAIZ MORADO DE 1 LITRO.png" alt="Chicha Morada La Mati — botella de 1 litro">
       </div>
     </div>
   </section>
