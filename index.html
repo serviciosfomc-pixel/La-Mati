@@ -734,8 +734,9 @@
         var(--card-2);
     }
     .prod-card.featured-wide .prod-img-wrap img {
-      object-fit: contain;
-      padding: 14px;
+      object-fit: cover;
+      object-position: center 38%;
+      transform: scale(1.15);
     }
     /* Mantener gradient top del prod-img-wrap pero más sutil para no oscurecer etiquetas */
     .prod-card.featured-wide .prod-img-wrap::after { height: 50px; opacity: 0.6; }
@@ -1794,7 +1795,7 @@
 
         <article class="prod-card featured-wide">
           <span class="prod-tag">100% Natural</span>
-          <div class="prod-img-wrap"><img src="Chicha morada.jpg" alt="Chicha Morada La Mati — botella de 1 litro"></div>
+          <div class="prod-img-wrap"><img src="FOTO DE CHICHA DE MAIZ MORADO DE 1 LITRO.png" alt="Chicha Morada La Mati — botella de 1 litro"></div>
           <div class="prod-body">
             <h4>Chicha Morada Casera</h4>
             <p>Maíz morado, clavo de olor, canela, piña, manzana y membrillo. Sin químicos, sin colorantes — preparada cada mañana. Solo disponible en botella de 1 litro.</p>
@@ -2102,7 +2103,7 @@
         francesa:   { name: 'Salchipapa Francesa',   price: 18.00, img: 'Platos transparentes/5.png' },
         andina:     { name: 'Salchipapa Andina',     price: 16.50, img: 'Platos transparentes/7.png' },
         combo:      { name: 'Combo Familia Mati',    price: 69.79, img: 'Platos de La Mati/Combo familiar.png' },
-        'chicha-1l': { name: 'Chicha Morada 1 L',    price: 4.00,  img: 'Chicha morada.jpg' },
+        'chicha-1l': { name: 'Chicha Morada 1 L',    price: 4.00,  img: 'FOTO DE CHICHA DE MAIZ MORADO DE 1 LITRO.png' },
       };
 
       let cart = [];
