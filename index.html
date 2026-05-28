@@ -726,23 +726,36 @@
     /* Card destacada (Chicha Morada) — span 2 cols en desktop, full en tablet/mobile */
     .prod-card.featured-wide {
       grid-column: span 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 340px;
+      overflow: hidden;
     }
     .prod-card.featured-wide .prod-img-wrap {
-      aspect-ratio: 3/2;
+      grid-column: 2;
+      grid-row: 1;
+      aspect-ratio: unset;
+      height: 100%;
       background:
-        radial-gradient(ellipse 60% 65% at 50% 50%, rgba(0,0,0,0.45), transparent 75%),
+        radial-gradient(ellipse 70% 80% at 50% 60%, rgba(0,0,0,0.35), transparent 75%),
         var(--card-2);
     }
     .prod-card.featured-wide .prod-img-wrap img {
       object-fit: contain;
-      object-position: center center;
-      padding: 12px;
+      object-position: center bottom;
+      padding: 10px 10px 0;
     }
-    /* Mantener gradient top del prod-img-wrap pero más sutil para no oscurecer etiquetas */
-    .prod-card.featured-wide .prod-img-wrap::after { height: 50px; opacity: 0.6; }
-    .prod-card.featured-wide .prod-body { padding: 24px 28px 26px; }
-    .prod-card.featured-wide h4 { font-size: 1.15rem; }
-    .prod-card.featured-wide p { font-size: 0.9rem; max-width: 540px; }
+    .prod-card.featured-wide .prod-img-wrap::after { display: none; }
+    .prod-card.featured-wide .prod-body {
+      grid-column: 1;
+      grid-row: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 36px 40px;
+    }
+    .prod-card.featured-wide h4 { font-size: 1.3rem; }
+    .prod-card.featured-wide p { font-size: 0.9rem; max-width: 380px; }
     .prod-img-wrap::after {
       /* Sutil sombra superior para que el badge "Top/Nuevo" se lea sobre fotos claras */
       content: "";
@@ -1794,9 +1807,8 @@
         </article>
 
         <article class="prod-card featured-wide">
-          <span class="prod-tag">100% Natural</span>
-          <div class="prod-img-wrap"><img src="FOTO DE CHICHA DE MAIZ MORADO DE 1 LITRO.png" alt="Chicha Morada La Mati — botella de 1 litro"></div>
           <div class="prod-body">
+            <span class="prod-tag" style="position:relative;top:auto;left:auto;margin-bottom:16px;display:inline-flex;">100% Natural</span>
             <h4>Chicha Morada Casera</h4>
             <p>Maíz morado, clavo de olor, canela, piña, manzana y membrillo. Sin químicos, sin colorantes — preparada cada mañana. Solo disponible en botella de 1 litro.</p>
             <div class="prod-foot">
@@ -1804,6 +1816,7 @@
               <a href="#" class="btn btn-primary btn-sm" data-product="chicha-1l">+ 1 L · S/. 4</a>
             </div>
           </div>
+          <div class="prod-img-wrap"><img src="FOTO DE CHICHA DE MAIZ MORADO DE 1 LITRO.png" alt="Chicha Morada La Mati — botella de 1 litro"></div>
         </article>
 
       </div>
