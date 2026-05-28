@@ -727,45 +727,105 @@
     /* ── Chicha banner full-width ── */
     .chicha-banner {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 420px;
-      background: var(--card);
-      border-top: 1px solid var(--border);
+      grid-template-columns: 55% 45%;
+      min-height: 480px;
+      background:
+        radial-gradient(ellipse 55% 90% at 0% 50%, rgba(130,50,180,0.13), transparent 65%),
+        linear-gradient(135deg, var(--dark) 0%, var(--black) 100%);
+      border-top: 1px solid rgba(130,50,180,0.25);
+      border-bottom: 1px solid rgba(130,50,180,0.25);
       margin-top: 40px;
       overflow: hidden;
+      position: relative;
+    }
+    .chicha-banner::before {
+      content: "CHICHA";
+      position: absolute;
+      font-size: 18vw;
+      font-weight: 900;
+      color: rgba(130,50,180,0.05);
+      left: -2%;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      letter-spacing: -0.04em;
+      line-height: 1;
     }
     .chicha-body {
       display: flex;
       flex-direction: column;
       justify-content: center;
       padding: 60px 72px;
+      position: relative;
+      z-index: 1;
+    }
+    .chicha-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #a855f7;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .chicha-eyebrow::before {
+      content: "";
+      width: 28px; height: 2px;
+      background: #a855f7;
+      display: inline-block;
     }
     .chicha-body h4 {
-      font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+      font-size: clamp(2.6rem, 4.5vw, 4rem);
       font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: -0.02em;
-      margin-bottom: 14px;
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+      margin-bottom: 20px;
+    }
+    .chicha-body h4 em {
+      font-style: italic;
+      color: #a855f7;
     }
     .chicha-body p {
-      font-size: 0.96rem;
+      font-size: 1rem;
       color: var(--muted);
-      line-height: 1.7;
-      max-width: 440px;
+      line-height: 1.75;
+      max-width: 420px;
+      margin-bottom: 32px;
+    }
+    .chicha-badges {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .chicha-badge {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      background: rgba(168,85,247,0.12);
+      border: 1px solid rgba(168,85,247,0.35);
+      color: #c084fc;
     }
     .chicha-img {
       overflow: hidden;
-      background:
-        radial-gradient(ellipse 60% 70% at 50% 55%, rgba(0,0,0,0.3), transparent 70%),
-        var(--card-2);
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: center;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 70%, rgba(130,50,180,0.18), transparent 70%);
     }
     .chicha-img img {
       width: 100%; height: 100%;
       object-fit: contain;
-      padding: 20px;
+      object-position: center bottom;
+      padding: 0 24px;
+      filter: drop-shadow(0 0 40px rgba(130,50,180,0.35));
     }
     .prod-img-wrap::after {
       /* Sutil sombra superior para que el badge "Top/Nuevo" se lea sobre fotos claras */
@@ -1824,12 +1884,17 @@
     <!-- chicha banner full-width fuera del wrap -->
     <div class="chicha-banner">
       <div class="chicha-body">
-        <span class="prod-tag" style="position:relative;top:auto;left:auto;margin-bottom:20px;display:inline-flex;width:fit-content;">100% Natural</span>
-        <h4>Chicha Morada Casera</h4>
-        <p>Maíz morado, clavo de olor, canela, piña, manzana y membrillo. Sin químicos, sin colorantes — preparada cada mañana. Solo disponible en botella de 1 litro.</p>
-        <div class="prod-foot" style="margin-top:28px;">
+        <span class="chicha-eyebrow">Preparada cada mañana</span>
+        <h4>Chicha <em>Morada</em><br>Casera</h4>
+        <p>Maíz morado, clavo de olor, canela, piña, manzana y membrillo. Sin químicos, sin colorantes. Solo disponible en botella de 1 litro.</p>
+        <div class="chicha-badges">
+          <span class="chicha-badge">100% Natural</span>
+          <span class="chicha-badge">Sin Colorantes</span>
+          <span class="chicha-badge">1 Litro Familiar</span>
+        </div>
+        <div class="prod-foot">
           <span class="prod-price">S/. 4.00</span>
-          <a href="#" class="btn btn-primary btn-sm" data-product="chicha-1l">+ 1 L · S/. 4</a>
+          <a href="#" class="btn btn-primary btn-sm" data-product="chicha-1l">Añadir al pedido</a>
         </div>
       </div>
       <div class="chicha-img">
@@ -2003,7 +2068,7 @@
     <span class="section-eyebrow">Únete al equipo</span>
     <h2>Trabaja con <em>La Mati</em></h2>
     <p>Buscamos cocineros, repartidores y atención al cliente. Sé parte de la salchipapería más querida de Arequipa.</p>
-    <a href="#" class="btn btn-primary btn-lg">Ver vacantes →</a>
+    <a href="https://wa.me/51980912958?text=Quiero%20trabajar%20con%20ustedes" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Ver vacantes →</a>
   </section>
 
   <!-- ════════════ FOOTER SIMPLE ════════════ -->
