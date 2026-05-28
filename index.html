@@ -734,9 +734,9 @@
         var(--card-2);
     }
     .prod-card.featured-wide .prod-img-wrap img {
-      object-fit: cover;
-      object-position: center 38%;
-      transform: scale(1.15);
+      object-fit: contain;
+      object-position: center center;
+      padding: 8px;
     }
     /* Mantener gradient top del prod-img-wrap pero más sutil para no oscurecer etiquetas */
     .prod-card.featured-wide .prod-img-wrap::after { height: 50px; opacity: 0.6; }
