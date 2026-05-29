@@ -406,7 +406,18 @@
       grid-template-columns: repeat(5, 1fr);
       gap: 18px;
     }
-    /* Grid de 7 salsas: fila de 4 + fila de 3 centrada */
+    .salsas-group { margin-top: 40px; }
+    .salsas-group:first-child { margin-top: 8px; }
+    .salsas-group-label {
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border-bottom: 1px solid rgba(255,184,0,0.2);
+      padding-bottom: 10px;
+      margin-bottom: 24px;
+    }
     .cat-grid--salsas {
       display: flex;
       flex-wrap: wrap;
@@ -1960,51 +1971,62 @@
         <p>10 salsas artesanales sin conservantes ni químicos. Elige la tuya y personaliza tu salchipapa.</p>
       </div>
 
-      <div class="cat-grid cat-grid--salsas">
-        <div class="cat-card">
-          <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/Copia de Copia de  Menú A4 Carta de Tragos Bar Moderno Negro/9.png" alt="Ají Mati"></div>
-          <h3>Ají Mati</h3>
-          <div class="cat-chips"><span>Ají amarillo</span><span>Mayonesa</span><span>Queso</span><span>Rocoto</span></div>
+      <!-- CLÁSICAS -->
+      <div class="salsas-group">
+        <p class="salsas-group-label">Clásicas</p>
+        <div class="cat-grid cat-grid--salsas">
+          <div class="cat-card">
+            <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/Copia de Copia de  Menú A4 Carta de Tragos Bar Moderno Negro/mayonesa.jpeg" alt="Mayonesa Casera"></div>
+            <h3>Mayonesa</h3>
+            <div class="cat-chips"><span>Huevo fresco</span><span>Aceite</span><span>Limón</span></div>
+          </div>
+          <div class="cat-card">
+            <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/Copia de Copia de  Menú A4 Carta de Tragos Bar Moderno Negro/11.png" alt="Ketchup"></div>
+            <h3>Ketchup</h3>
+            <div class="cat-chips"><span>Tomate</span><span>Especias</span><span>Vinagre</span></div>
+          </div>
+          <div class="cat-card">
+            <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/Copia de Copia de  Menú A4 Carta de Tragos Bar Moderno Negro/13.png" alt="Mostaza"></div>
+            <h3>Mostaza</h3>
+            <div class="cat-chips"><span>Mostaza en grano</span><span>Vinagre</span><span>Sal</span></div>
+          </div>
+          <div class="cat-card">
+            <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/Copia de Copia de  Menú A4 Carta de Tragos Bar Moderno Negro/9.png" alt="Ají Mati"></div>
+            <h3>Ají Mati</h3>
+            <div class="cat-chips"><span>Ají amarillo</span><span>Mayonesa</span><span>Queso</span><span>Rocoto</span></div>
+          </div>
         </div>
-        <div class="cat-card">
-          <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/Copia de Copia de  Menú A4 Carta de Tragos Bar Moderno Negro/5.png" alt="Salsa de la Casa"></div>
-          <h3>Pimentón Ahumado</h3>
-          <div class="cat-chips"><span>Queso fundido</span><span>Ajo</span><span>Pimentón</span></div>
-        </div>
-        <div class="cat-card">
-          <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/Copia de Copia de  Menú A4 Carta de Tragos Bar Moderno Negro/17.png" alt="Salsa de la Casa 2"></div>
-          <h3>Especial de la Casa</h3>
-          <div class="cat-chips"><span>Leche</span><span>Pimentón</span><span>Queso</span><span>Galletas</span></div>
-        </div>
-        <div class="cat-card">
-          <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/Copia de Copia de  Menú A4 Carta de Tragos Bar Moderno Negro/mayonesa.jpeg" alt="Mayonesa Casera"></div>
-          <h3>Mayonesa</h3>
-          <div class="cat-chips"><span>Huevo fresco</span><span>Aceite</span><span>Limón</span></div>
-        </div>
-        <div class="cat-card">
-          <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/Copia de Copia de  Menú A4 Carta de Tragos Bar Moderno Negro/11.png" alt="Ketchup"></div>
-          <h3>Ketchup</h3>
-          <div class="cat-chips"><span>Tomate</span><span>Especias</span><span>Vinagre</span></div>
-        </div>
-        <div class="cat-card">
-          <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/Copia de Copia de  Menú A4 Carta de Tragos Bar Moderno Negro/13.png" alt="Mostaza"></div>
-          <h3>Mostaza</h3>
-          <div class="cat-chips"><span>Mostaza en grano</span><span>Vinagre</span><span>Sal</span></div>
-        </div>
-        <div class="cat-card">
-          <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/Copia de Copia de  Menú A4 Carta de Tragos Bar Moderno Negro/21.png" alt="Honey Mustard"></div>
-          <h3>Honey Mustard</h3>
-          <div class="cat-chips"><span>Mostaza</span><span>Miel de abeja</span><span>Vinagre</span></div>
-        </div>
-        <div class="cat-card">
-          <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/Copia de Copia de  Menú A4 Carta de Tragos Bar Moderno Negro/19.png" alt="Salsa de Palta"></div>
-          <h3>Salsa de Palta</h3>
-          <div class="cat-chips"><span>Palta</span><span>Mayonesa</span><span>Limón</span></div>
-        </div>
-        <div class="cat-card">
-          <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/Copia de Copia de  Menú A4 Carta de Tragos Bar Moderno Negro/15.png" alt="Salsa de Aceituna"></div>
-          <h3>Aceituna</h3>
-          <div class="cat-chips"><span>Aceituna</span><span>Mayonesa</span><span>Ajo</span></div>
+      </div>
+
+      <!-- ESPECIALES -->
+      <div class="salsas-group">
+        <p class="salsas-group-label">Especiales</p>
+        <div class="cat-grid cat-grid--salsas">
+          <div class="cat-card">
+            <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/Copia de Copia de  Menú A4 Carta de Tragos Bar Moderno Negro/21.png" alt="Honey Mustard"></div>
+            <h3>Honey Mustard</h3>
+            <div class="cat-chips"><span>Mostaza</span><span>Miel de abeja</span><span>Vinagre</span></div>
+          </div>
+          <div class="cat-card">
+            <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/Copia de Copia de  Menú A4 Carta de Tragos Bar Moderno Negro/19.png" alt="Salsa de Palta"></div>
+            <h3>Salsa de Palta</h3>
+            <div class="cat-chips"><span>Palta</span><span>Mayonesa</span><span>Limón</span></div>
+          </div>
+          <div class="cat-card">
+            <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/Copia de Copia de  Menú A4 Carta de Tragos Bar Moderno Negro/15.png" alt="Salsa de Aceituna"></div>
+            <h3>Aceituna</h3>
+            <div class="cat-chips"><span>Aceituna</span><span>Mayonesa</span><span>Ajo</span></div>
+          </div>
+          <div class="cat-card">
+            <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/Copia de Copia de  Menú A4 Carta de Tragos Bar Moderno Negro/5.png" alt="Pimentón Ahumado"></div>
+            <h3>Pimentón Ahumado</h3>
+            <div class="cat-chips"><span>Queso fundido</span><span>Ajo</span><span>Pimentón</span></div>
+          </div>
+          <div class="cat-card">
+            <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/Copia de Copia de  Menú A4 Carta de Tragos Bar Moderno Negro/17.png" alt="Especial de la Casa"></div>
+            <h3>Especial de la Casa</h3>
+            <div class="cat-chips"><span>Leche</span><span>Pimentón</span><span>Queso</span><span>Galletas</span></div>
+          </div>
         </div>
       </div>
     </div>
