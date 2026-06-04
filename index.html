@@ -298,6 +298,15 @@
       0%, 100% { transform: translateY(0) scale(1.08); }
       50%      { transform: translateY(-12px) scale(1.08); }
     }
+    /* La Mixta: fondo oscuro eliminado con contrast+screen */
+    .slide-img--mixta { background: #000 !important; }
+    .slide-img--mixta img {
+      mix-blend-mode: screen;
+      filter:
+        contrast(1.9) brightness(1.25)
+        drop-shadow(0 0 30px rgba(255,184,0,0.45))
+        drop-shadow(0 20px 40px rgba(0,0,0,0.6));
+    }
     .slide-img::before {
       content: "";
       position: absolute; inset: 0;
@@ -1919,8 +1928,8 @@
             <a href="#carta" class="btn btn-outline btn-lg">Ver carta</a>
           </div>
         </div>
-        <div class="slide-img">
-          <img src="Platos de La Mati/la mixta.jpeg" alt="La Mixta" style="mix-blend-mode:screen;filter:drop-shadow(0 0 28px rgba(255,184,0,0.5)) drop-shadow(0 20px 40px rgba(0,0,0,0.7));">
+        <div class="slide-img slide-img--mixta">
+          <img src="Platos de La Mati/la mixta.jpeg" alt="La Mixta">
           <div class="slide-price">
             <small>SOLO POR</small>
             <strong>S/16.00</strong>
