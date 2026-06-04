@@ -1750,6 +1750,11 @@
       .prod-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
       .prod-card--combo { grid-column: 1 / -1; }
       .prod-card--combo .prod-img-wrap { aspect-ratio: 4/3; }
+      .prod-card--combo .combo-grid-imgs img {
+        object-fit: contain;
+        object-position: center center;
+        background: var(--card);
+      }
       .prod-card--combo .prod-body { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 0; }
       .prod-card--combo .prod-body h4 { width: 100%; }
       .prod-card--combo .prod-body p { width: 100%; margin-bottom: 0; }
