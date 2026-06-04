@@ -298,17 +298,6 @@
       0%, 100% { transform: translateY(0) scale(1.08); }
       50%      { transform: translateY(-12px) scale(1.08); }
     }
-    /* La Mixta: mask radial para fundir el fondo de la foto */
-    .slide-img-cover {
-      object-fit: cover !important;
-      object-position: center 38% !important;
-      animation: floatPlate 5s ease-in-out infinite !important;
-      -webkit-mask-image: radial-gradient(ellipse 82% 88% at 50% 50%, black 38%, transparent 72%);
-      mask-image: radial-gradient(ellipse 82% 88% at 50% 50%, black 38%, transparent 72%);
-      filter:
-        drop-shadow(0 36px 36px rgba(0,0,0,0.6))
-        drop-shadow(0 0 24px rgba(255,184,0,0.2)) !important;
-    }
     /* Francesa: aleja el plato */
     .slide-img-zoomout {
       transform: scale(0.82) !important;
@@ -1928,26 +1917,7 @@
         </div>
       </article>
 
-      <!-- Slide 4: La Mixta -->
-      <article class="hero-slide">
-        <div class="slide-text">
-          <span class="slide-eyebrow">La combinación perfecta</span>
-          <h1>La<br><span>Mixta</span></h1>
-          <p>Papa nativa, Frankfurt, finas hierbas y salchicha viena. Tres sabores en un solo plato.</p>
-          <div class="slide-actions">
-            <a href="#combos" class="btn btn-primary btn-lg" data-product="arequip">Pedir La Mixta →</a>
-            <a href="#carta" class="btn btn-outline btn-lg">Ver carta</a>
-          </div>
-        </div>
-        <div class="slide-img">
-          <img src="Platos de La Mati/la mixta.jpeg" alt="La Mixta" class="slide-img-cover">
-          <div class="slide-price">
-            <small>SOLO POR</small>
-            <strong>S/16.00</strong>
-            <small>¡Pídela!</small>
-          </div>
-        </div>
-      </article>
+      <!-- Slide 4: La Mixta — pendiente PNG sin fondo -->
 
     </div>
 
@@ -1962,7 +1932,6 @@
       <button class="on" aria-label="Ir al slide 1"></button>
       <button aria-label="Ir al slide 2"></button>
       <button aria-label="Ir al slide 3"></button>
-      <button aria-label="Ir al slide 4"></button>
     </div>
   </section>
 
