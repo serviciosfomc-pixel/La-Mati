@@ -298,27 +298,23 @@
       0%, 100% { transform: translateY(0) scale(1.08); }
       50%      { transform: translateY(-12px) scale(1.08); }
     }
-    /* Slide con foto de fondo completo (La Mixta) */
-    .hero-slide--fullbg {
-      grid-template-columns: 1fr;
-      position: relative;
+    /* La Mixta: foto con fondo, cover sin animación flotante */
+    .slide-img-cover {
+      object-fit: cover !important;
+      object-position: center 35% !important;
+      animation: none !important;
+      transform: scale(1) !important;
+      filter: none !important;
     }
-    .hero-slide--fullbg::before {
-      content: "";
-      position: absolute; inset: 0;
-      background-image: var(--slide-bg);
-      background-size: cover;
-      background-position: center 40%;
-      z-index: 0;
+    /* Francesa: aleja el plato */
+    .slide-img-zoomout {
+      transform: scale(0.82) !important;
+      animation: floatPlateSmall 5s ease-in-out infinite !important;
     }
-    .hero-slide--fullbg::after {
-      content: "";
-      position: absolute; inset: 0;
-      background: linear-gradient(to right, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.75) 45%, rgba(8,8,8,0.3) 100%);
-      z-index: 1;
+    @keyframes floatPlateSmall {
+      0%, 100% { transform: translateY(0) scale(0.82); }
+      50%      { transform: translateY(-10px) scale(0.82); }
     }
-    .hero-slide--fullbg .slide-text { position: relative; z-index: 2; }
-    .hero-slide--fullbg .slide-img--hidden { display: none; }
     .slide-img::before {
       content: "";
       position: absolute; inset: 0;
@@ -1899,7 +1895,7 @@
           </div>
         </div>
         <div class="slide-img">
-          <img src="Platos de la mati sin fondo/5.png" alt="Salchipapa Francesa">
+          <img src="Platos de la mati sin fondo/5.png" alt="Salchipapa Francesa" class="slide-img-zoomout">
           <div class="slide-price">
             <small>SOLO POR</small>
             <strong>S/18.00</strong>
@@ -1930,7 +1926,7 @@
       </article>
 
       <!-- Slide 4: La Mixta -->
-      <article class="hero-slide hero-slide--fullbg" style="--slide-bg:url('Platos de La Mati/la mixta.jpeg');">
+      <article class="hero-slide">
         <div class="slide-text">
           <span class="slide-eyebrow">La combinación perfecta</span>
           <h1>La<br><span>Mixta</span></h1>
@@ -1940,8 +1936,8 @@
             <a href="#carta" class="btn btn-outline btn-lg">Ver carta</a>
           </div>
         </div>
-        <div class="slide-img slide-img--hidden">
-          <img src="Platos transparentes/3.png" alt="La Mixta" style="opacity:0;pointer-events:none;">
+        <div class="slide-img">
+          <img src="Platos de La Mati/la mixta.jpeg" alt="La Mixta" class="slide-img-cover">
           <div class="slide-price">
             <small>SOLO POR</small>
             <strong>S/16.00</strong>
