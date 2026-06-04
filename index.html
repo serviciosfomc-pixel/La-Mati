@@ -902,6 +902,109 @@
       letter-spacing: -0.01em;
     }
 
+    /* ════════════ PROMO LUNES ════════════ */
+    .lunes-promo {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 30px 0;
+      min-height: 420px;
+      position: relative;
+      background:
+        radial-gradient(ellipse 50% 80% at 0% 50%, rgba(255,184,0,0.12), transparent 55%),
+        linear-gradient(135deg, #1a1000 0%, #0d0a00 100%);
+      border: 1px solid rgba(255,184,0,0.25);
+    }
+    .lunes-bg-text {
+      position: absolute;
+      font-size: 17vw;
+      font-weight: 900;
+      color: rgba(255,184,0,0.04);
+      left: -1%;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      z-index: 0;
+    }
+    .lunes-text {
+      padding: 52px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+    .lunes-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.7rem;
+      font-weight: 900;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+    .lunes-eyebrow::before { content: ""; width: 28px; height: 2px; background: var(--gold); display: inline-block; }
+    .lunes-text h3 {
+      font-size: clamp(2.6rem, 4vw, 4rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+      margin-bottom: 18px;
+      color: var(--white);
+    }
+    .lunes-text h3 em { font-style: italic; color: var(--gold); }
+    .lunes-text p {
+      font-size: 0.96rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 400px;
+      margin-bottom: 24px;
+    }
+    .lunes-price-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .lunes-price {
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--gold);
+      letter-spacing: -0.02em;
+    }
+    .lunes-badge {
+      font-size: 0.65rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background: var(--gold);
+      color: #000;
+      padding: 6px 14px;
+      border-radius: 100px;
+    }
+    .lunes-img {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.3);
+    }
+    .lunes-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.5s;
+    }
+    .lunes-promo:hover .lunes-img img { transform: scale(1.04); }
+
     /* ════════════ BUCKET FAMILIAR ════════════ */
     .bucket {
       padding: 90px 0;
@@ -1681,6 +1784,12 @@
         align-items: center;
       }
       .chicha-img img { padding: 8px 20px; object-position: center center; }
+
+      .lunes-promo { grid-template-columns: 1fr; min-height: auto; }
+      .lunes-text { padding: 36px 24px 28px; order: 2; }
+      .lunes-img { order: 1; min-height: 280px; }
+      .lunes-price { font-size: 2.2rem; }
+      .lunes-bg-text { font-size: 40vw; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1799,6 +1908,27 @@
         </div>
       </article>
 
+      <!-- Slide 4: La Mixta -->
+      <article class="hero-slide">
+        <div class="slide-text">
+          <span class="slide-eyebrow">La combinación perfecta</span>
+          <h1>La<br><span>Mixta</span></h1>
+          <p>Papa nativa, Frankfurt, finas hierbas y salchicha viena. Tres sabores en un solo plato.</p>
+          <div class="slide-actions">
+            <a href="#combos" class="btn btn-primary btn-lg" data-product="arequip">Pedir La Mixta →</a>
+            <a href="#carta" class="btn btn-outline btn-lg">Ver carta</a>
+          </div>
+        </div>
+        <div class="slide-img">
+          <img src="Platos de La Mati/la mixta.jpeg" alt="La Mixta" style="mix-blend-mode:screen;filter:drop-shadow(0 0 28px rgba(255,184,0,0.5)) drop-shadow(0 20px 40px rgba(0,0,0,0.7));">
+          <div class="slide-price">
+            <small>SOLO POR</small>
+            <strong>S/16.00</strong>
+            <small>¡Pídela!</small>
+          </div>
+        </div>
+      </article>
+
     </div>
 
     <button class="hero-arrow prev" aria-label="Anterior" id="hero-prev">
@@ -1812,6 +1942,7 @@
       <button class="on" aria-label="Ir al slide 1"></button>
       <button aria-label="Ir al slide 2"></button>
       <button aria-label="Ir al slide 3"></button>
+      <button aria-label="Ir al slide 4"></button>
     </div>
   </section>
 
@@ -1830,7 +1961,7 @@
 
         <article class="prod-card">
           <span class="prod-tag">Top</span>
-          <div class="prod-img-wrap"><img src="Platos de La Mati/clasica.jpg" alt="Salchipapa Clásica"></div>
+          <div class="prod-img-wrap"><img src="Platos de La Mati/clasica.png" alt="Salchipapa Clásica"></div>
           <div class="prod-body">
             <h4>Salchipapa Clásica</h4>
             <p>Papa nativa 350g y salchicha Frankfürt. El sabor de toda la vida.</p>
@@ -1891,6 +2022,18 @@
           </div>
         </article>
 
+        <article class="prod-card">
+          <div class="prod-img-wrap"><img src="Platos de La Mati/Salchipapa Arequipeña.png" alt="Salchipapa Arequipeña"></div>
+          <div class="prod-body">
+            <h4>Arequipeña</h4>
+            <p>Papa nativa y salchicha arequipeña viena dorada al sartén.</p>
+            <div class="prod-foot">
+              <span class="prod-price">S/. 14.00</span>
+              <a href="#" class="btn btn-primary btn-sm" data-product="arequipena">Añadir</a>
+            </div>
+          </div>
+        </article>
+
         <article class="prod-card prod-card--top">
           <span class="prod-tag">★ TOP</span>
           <div class="prod-img-wrap"><img src="Platos de La Mati/Salchipapa Francesa.png" alt="Salchipapa Francesa Especial"></div>
@@ -1920,9 +2063,9 @@
         <article class="prod-card prod-card--combo">
           <span class="prod-tag alt">Familiar</span>
           <div class="prod-img-wrap combo-grid-imgs">
-            <img src="Platos de La Mati/clasica.jpg"                      alt="Salchipapa Clásica">
-            <img src="Platos de La Mati/la mixta.jpeg"   alt="Salchipapa Arequipeña">
-            <img src="Platos de La Mati/Salchipapa Francesa.png"           alt="Francesa Especial">
+            <img src="Platos de La Mati/clasica.png"                      alt="Salchipapa Clásica">
+            <img src="Platos de La Mati/la mixta.jpeg"                    alt="La Mixta">
+            <img src="Platos de La Mati/Salchipapa Francesa.png"          alt="Francesa Especial">
             <img src="Platos de La Mati/Salchipollo.png"                  alt="Salchipollo">
           </div>
           <div class="prod-body">
@@ -1931,6 +2074,21 @@
             <div class="prod-foot">
               <span class="prod-price">S/. 65.50</span>
               <a href="#" class="btn btn-primary btn-sm" data-product="combo">Añadir</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="prod-card prod-card--combo">
+          <span class="prod-tag alt">Familiar 2</span>
+          <div class="prod-img-wrap">
+            <img src="Platos de La Mati/combo familiar 2.jpg" alt="Combo Familia Mati 2" style="width:100%;height:100%;object-fit:cover;object-position:center 60%;">
+          </div>
+          <div class="prod-body">
+            <h4>Combo Familia Mati 2</h4>
+            <p>4 salchipapas a elección con diferentes toppings, 2 botellas de chicha morada y pack de salsas.</p>
+            <div class="prod-foot">
+              <span class="prod-price">S/. 65.50</span>
+              <a href="#" class="btn btn-primary btn-sm" data-product="combo2">Añadir</a>
             </div>
           </div>
         </article>
@@ -1969,7 +2127,7 @@
           <span class="section-eyebrow">Hechas en casa cada mañana</span>
           <h2 class="section-title">Nuestras <em>salsas</em></h2>
         </div>
-        <p>9 salsas artesanales sin conservantes ni químicos. Elige la tuya y personaliza tu salchipapa.</p>
+        <p>10 salsas artesanales sin conservantes ni químicos. Elige la tuya y personaliza tu salchipapa.</p>
       </div>
 
       <!-- CLÁSICAS -->
@@ -1977,22 +2135,22 @@
         <p class="salsas-group-label">Clásicas</p>
         <div class="cat-grid cat-grid--salsas">
           <div class="cat-card">
-            <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/Copia de Copia de  Menú A4 Carta de Tragos Bar Moderno Negro/mayonesa.jpeg" alt="Mayonesa Casera"></div>
+            <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/mayonesa.jpeg" alt="Mayonesa Casera"></div>
             <h3>Mayonesa</h3>
             <div class="cat-chips"><span>Huevo fresco</span><span>Aceite</span><span>Limón</span></div>
           </div>
           <div class="cat-card">
-            <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/Copia de Copia de  Menú A4 Carta de Tragos Bar Moderno Negro/11.png" alt="Ketchup"></div>
+            <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/ketchup.png" alt="Ketchup"></div>
             <h3>Ketchup</h3>
             <div class="cat-chips"><span>Tomate</span><span>Especias</span><span>Vinagre</span></div>
           </div>
           <div class="cat-card">
-            <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/Copia de Copia de  Menú A4 Carta de Tragos Bar Moderno Negro/13.png" alt="Mostaza"></div>
+            <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/mostaza.png" alt="Mostaza"></div>
             <h3>Mostaza</h3>
             <div class="cat-chips"><span>Mostaza en grano</span><span>Vinagre</span><span>Sal</span></div>
           </div>
           <div class="cat-card">
-            <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/Copia de Copia de  Menú A4 Carta de Tragos Bar Moderno Negro/9.png" alt="Ají Mati"></div>
+            <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/aji.png" alt="Ají Mati"></div>
             <h3>Ají Mati</h3>
             <div class="cat-chips"><span>Ají amarillo</span><span>Mayonesa</span><span>Queso</span><span>Rocoto</span></div>
           </div>
@@ -2004,54 +2162,56 @@
         <p class="salsas-group-label">Especiales</p>
         <div class="cat-grid cat-grid--salsas">
           <div class="cat-card">
-            <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/Copia de Copia de  Menú A4 Carta de Tragos Bar Moderno Negro/21.png" alt="Honey Mustard"></div>
+            <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/honey.png" alt="Honey Mustard"></div>
             <h3>Honey Mustard</h3>
             <div class="cat-chips"><span>Mostaza</span><span>Miel de abeja</span><span>Vinagre</span></div>
           </div>
           <div class="cat-card">
-            <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/Copia de Copia de  Menú A4 Carta de Tragos Bar Moderno Negro/19.png" alt="Salsa de Palta"></div>
+            <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/palta.png" alt="Salsa de Palta"></div>
             <h3>Salsa de Palta</h3>
             <div class="cat-chips"><span>Palta</span><span>Mayonesa</span><span>Limón</span></div>
           </div>
           <div class="cat-card">
-            <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/Copia de Copia de  Menú A4 Carta de Tragos Bar Moderno Negro/15.png" alt="Salsa de Aceituna"></div>
+            <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/aceituna.png" alt="Salsa de Aceituna"></div>
             <h3>Aceituna</h3>
             <div class="cat-chips"><span>Aceituna</span><span>Mayonesa</span><span>Ajo</span></div>
           </div>
           <div class="cat-card">
-            <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/Copia de Copia de  Menú A4 Carta de Tragos Bar Moderno Negro/5.png" alt="Pimentón Ahumado"></div>
+            <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/Pimentopn ahumado.png" alt="Pimentón Ahumado"></div>
             <h3>Pimentón Ahumado</h3>
             <div class="cat-chips"><span>Queso fundido</span><span>Ajo</span><span>Pimentón</span></div>
           </div>
           <div class="cat-card">
-            <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/Copia de Copia de  Menú A4 Carta de Tragos Bar Moderno Negro/17.png" alt="Especial de la Casa"></div>
+            <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/especial de la casa.png" alt="Especial de la Casa"></div>
             <h3>Especial de la Casa</h3>
             <div class="cat-chips"><span>Leche</span><span>Pimentón</span><span>Queso</span><span>Galletas</span></div>
+          </div>
+          <div class="cat-card">
+            <div class="cat-circle cat-circle--sauce"><img src="Salsas de La Mati/big mati.jpeg" alt="Big Mati"></div>
+            <h3>Big Mati</h3>
+            <div class="cat-chips"><span>Ají</span><span>Queso</span><span>Especias</span><span>Crema</span></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ════════════ BANNER PROMO MID ════════════ -->
-  <div class="wrap">
-    <div class="promo-banner" id="promos">
-      <div class="pb-text">
-        <small>Club La Mati</small>
-        <h3>Tu 5ta Salchipapa<br><span class="price">GRATIS</span></h3>
-        <p>Acumula tus compras y a la <strong>quinta salchipapa</strong> te la llevas <strong>totalmente gratis</strong>. Sin tarjetas físicas, sin stickers — todo registrado digitalmente con tu número de WhatsApp. Beneficio exclusivo del <strong>Club La Mati</strong>.</p>
-        <div class="pb-actions">
-          <a href="#club" class="btn btn-primary btn-lg">Únete al Club →</a>
-          <a href="#club" class="btn-link">¿Cómo funciona?</a>
+  <!-- ════════════ PROMO LUNES ════════════ -->
+  <div class="wrap" id="promos">
+    <div class="lunes-promo">
+      <div class="lunes-bg-text">LUNES</div>
+      <div class="lunes-text">
+        <span class="lunes-eyebrow">Solo los lunes</span>
+        <h3>Clásica<br><em>+ Chicha</em></h3>
+        <p>Llévate una Salchipapa Clásica y una botella de Chicha Morada Casera juntas. La promo del inicio de semana que todos esperan.</p>
+        <div class="lunes-price-row">
+          <span class="lunes-price">S/. 15.00</span>
+          <span class="lunes-badge">COMBO LUNES</span>
         </div>
+        <a href="https://wa.me/51980912958?text=Quiero%20el%20combo%20del%20lunes%20%E2%80%94%20Cl%C3%A1sica%20%2B%20Chicha%20S%2F.15" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Pedir combo lunes →</a>
       </div>
-      <div class="pb-img">
-        <img src="Platos de La Mati/clasica.jpg" alt="Salchipapa Clásica La Mati — papa nativa 350g y salchicha Frankfürt">
-        <div class="pb-tag">
-          <small>5TA COMPRA</small>
-          <strong>GRATIS</strong>
-          <span>todo el año</span>
-        </div>
+      <div class="lunes-img">
+        <img src="Combos FLYERS/salchipapa clasica + botella de chicha.jpeg" alt="Promo Lunes — Clásica + Chicha Morada S/.15">
       </div>
     </div>
   </div>
@@ -2062,7 +2222,7 @@
       <div class="bucket-grid">
         <div class="bucket-img">
           <div class="combo-grid-imgs" style="aspect-ratio:4/3;">
-            <img src="Platos de La Mati/clasica.jpg"                     alt="Salchipapa Clásica">
+            <img src="Platos de La Mati/clasica.png"                     alt="Salchipapa Clásica">
             <img src="Platos de La Mati/la mixta.jpeg"  alt="Salchipapa Arequipeña">
             <img src="Platos de La Mati/Salchipapa Francesa.png"          alt="Francesa Especial">
             <img src="Platos de La Mati/Salchipapa Andina.png"           alt="Salchipapa Andina">
@@ -2262,14 +2422,16 @@
       const WHATSAPP  = '51980912958';
 
       const PRODUCTS = {
-        clasica:    { name: 'Salchipapa Clásica',    price: 13.00, img: 'Platos de La Mati/clasica.jpg' },
+        clasica:    { name: 'Salchipapa Clásica',    price: 13.00, img: 'Platos de La Mati/clasica.png' },
         royal:      { name: 'SalchiRoyal Especial',  price: 15.50, img: 'Platos transparentes/4.png' },
         americana:  { name: 'Salchipapa Americana',  price: 15.00, img: 'Platos transparentes/6.png' },
         pollo:      { name: 'Salchipollo',           price: 14.50, img: 'Platos transparentes/2.png' },
         arequip:    { name: 'La Mixta',              price: 16.00, img: 'Platos de La Mati/la mixta.jpeg' },
+        arequipena: { name: 'Salchipapa Arequipeña', price: 14.00, img: 'Platos de La Mati/Salchipapa Arequipeña.png' },
         francesa:   { name: 'Salchipapa Francesa',   price: 18.00, img: 'Platos de La Mati/Salchipapa Francesa.png' },
         andina:     { name: 'Salchipapa Andina',     price: 16.50, img: 'Platos transparentes/7.png' },
-        combo:      { name: 'Combo Familia Mati',    price: 65.50, img: 'Platos de La Mati/Combo familiar.png' },
+        combo:      { name: 'Combo Familia Mati',    price: 65.50, img: 'Platos de La Mati/clasica.png' },
+        combo2:     { name: 'Combo Familia Mati 2',  price: 65.50, img: 'Platos de La Mati/combo familiar 2.jpg' },
         'chicha-1l': { name: 'Chicha Morada 1 L',    price: 4.00,  img: 'FOTO DE CHICHA DE MAIZ MORADO DE 1 LITRO.png' },
       };
 
