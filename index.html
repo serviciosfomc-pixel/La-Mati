@@ -902,6 +902,140 @@
       letter-spacing: -0.01em;
     }
 
+    /* ════════════ PROMO CHICHA 2x1 ════════════ */
+    .chicha-promo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-radius: 18px;
+      overflow: hidden;
+      margin: 30px 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 0% 50%, rgba(130,50,180,0.2), transparent 60%),
+        linear-gradient(135deg, #130520 0%, #0a0012 100%);
+      border: 1px solid rgba(168,85,247,0.3);
+      min-height: 380px;
+      position: relative;
+    }
+    .chicha-promo::before {
+      content: "2×1";
+      position: absolute;
+      font-size: 20vw;
+      font-weight: 900;
+      color: rgba(130,50,180,0.06);
+      right: -1%;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      letter-spacing: -0.06em;
+      line-height: 1;
+      z-index: 0;
+    }
+    .chicha-promo-text {
+      padding: 52px 52px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+    .chicha-promo-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #a855f7;
+      margin-bottom: 16px;
+    }
+    .chicha-promo-tag::before { content: ""; width: 24px; height: 2px; background: #a855f7; display:inline-block; }
+    .chicha-promo-text h3 {
+      font-size: clamp(2rem, 3.2vw, 3.2rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 16px;
+      color: var(--white);
+    }
+    .chicha-promo-text h3 em { font-style: italic; color: #a855f7; }
+    .chicha-promo-text p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 380px;
+      margin-bottom: 28px;
+    }
+    .chicha-promo-prices {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+    .chicha-promo-bottle { text-align: center; }
+    .chicha-promo-label {
+      display: block;
+      font-size: 0.63rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .chicha-promo-price { font-size: 1.7rem; font-weight: 900; color: var(--white); }
+    .chicha-promo-bottle--deal .chicha-promo-price { color: #c084fc; }
+    .chicha-promo-plus { font-size: 2rem; font-weight: 900; color: rgba(168,85,247,0.35); }
+    .chicha-promo-img {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      background: radial-gradient(ellipse 70% 60% at 50% 70%, rgba(130,50,180,0.25), transparent 70%);
+      padding-bottom: 0;
+    }
+    .chicha-promo-bottles {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      width: 100%;
+      gap: 8px;
+      padding: 0 24px;
+    }
+    .chicha-promo-bottle-wrap {
+      position: relative;
+      flex: 1;
+      max-width: 150px;
+    }
+    .chicha-promo-bottle-wrap img {
+      width: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 0 28px rgba(130,50,180,0.5));
+    }
+    .chicha-promo-bottle-wrap--deal {
+      transform: scale(1.1) translateY(-12px);
+      z-index: 2;
+    }
+    .chicha-promo-badge {
+      position: absolute;
+      top: 12px; right: -10px;
+      font-size: 0.72rem;
+      font-weight: 900;
+      padding: 6px 11px;
+      border-radius: 100px;
+      background: var(--gold);
+      color: #000;
+      box-shadow: 0 4px 12px rgba(255,184,0,0.4);
+    }
+    .chicha-promo-badge--deal {
+      background: #a855f7;
+      color: #fff;
+      font-size: 1rem;
+      padding: 8px 14px;
+      box-shadow: 0 4px 16px rgba(168,85,247,0.55);
+    }
+
     /* ════════════ BUCKET FAMILIAR ════════════ */
     .bucket {
       padding: 90px 0;
@@ -1661,6 +1795,11 @@
       .cart-fab { bottom: 16px; right: 16px; width: 54px; height: 54px; }
       .cart-toast { left: 16px; right: 16px; bottom: 84px; text-align: center; }
 
+      .chicha-promo { grid-template-columns: 1fr; }
+      .chicha-promo-text { padding: 36px 24px 28px; }
+      .chicha-promo-img { min-height: 260px; }
+      .chicha-promo-bottle-wrap { max-width: 120px; }
+
       .chicha-banner {
         grid-template-columns: 1fr;
         grid-template-rows: auto auto;
@@ -2051,6 +2190,41 @@
           <small>5TA COMPRA</small>
           <strong>GRATIS</strong>
           <span>todo el año</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════ PROMO CHICHA 2x1 ════════════ -->
+  <div class="wrap">
+    <div class="chicha-promo">
+      <div class="chicha-promo-text">
+        <span class="chicha-promo-tag">Promoción especial</span>
+        <h3>2da botella<br><em>a solo S/. 1</em></h3>
+        <p>Lleva 2 botellas de nuestra Chicha Morada Casera — la segunda te cuesta solo un sol. Preparada cada mañana, sin conservantes ni colorantes.</p>
+        <div class="chicha-promo-prices">
+          <div class="chicha-promo-bottle">
+            <span class="chicha-promo-label">1ra botella</span>
+            <span class="chicha-promo-price">S/. 4</span>
+          </div>
+          <div class="chicha-promo-plus">+</div>
+          <div class="chicha-promo-bottle chicha-promo-bottle--deal">
+            <span class="chicha-promo-label">2da botella</span>
+            <span class="chicha-promo-price">S/. 1</span>
+          </div>
+        </div>
+        <a href="#combos" class="btn btn-primary btn-lg">Pedir ahora →</a>
+      </div>
+      <div class="chicha-promo-img">
+        <div class="chicha-promo-bottles">
+          <div class="chicha-promo-bottle-wrap">
+            <img src="FOTO DE CHICHA DE MAIZ MORADO DE 1 LITRO.png" alt="Chicha Morada 1L">
+            <span class="chicha-promo-badge">S/. 4</span>
+          </div>
+          <div class="chicha-promo-bottle-wrap chicha-promo-bottle-wrap--deal">
+            <img src="FOTO DE CHICHA DE MAIZ MORADO DE 1 LITRO.png" alt="Chicha Morada 1L — 2da a S/.1">
+            <span class="chicha-promo-badge chicha-promo-badge--deal">S/. 1</span>
+          </div>
         </div>
       </div>
     </div>
