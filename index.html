@@ -1698,6 +1698,58 @@
       font-weight: 900;
     }
 
+    /* ── Salsas inline en cada plato del carrito ── */
+    .cart-item-sauces {
+      grid-column: 1 / -1;
+      padding: 10px 0 6px;
+      border-top: 1px solid var(--border);
+      margin-top: 4px;
+    }
+    .sauces-label {
+      font-size: 0.62rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .sauces-subgroup { margin-bottom: 8px; }
+    .sauces-subgroup-name {
+      font-size: 0.62rem;
+      color: var(--muted);
+      margin-bottom: 5px;
+    }
+    .sauces-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .sauce-chip {
+      padding: 4px 10px;
+      background: var(--card-2);
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      color: var(--fg);
+      font-size: 0.71rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color 0.13s, background 0.13s, color 0.13s;
+      font-family: inherit;
+      line-height: 1.3;
+    }
+    .sauce-chip.sel {
+      border-color: var(--gold);
+      background: rgba(255,184,0,0.12);
+      color: var(--gold);
+    }
+    .sauce-chip:disabled { opacity: 0.32; cursor: not-allowed; pointer-events: none; }
+    .sauces-tally {
+      font-size: 0.66rem;
+      color: var(--muted);
+      margin-top: 7px;
+    }
+    .sauces-tally .tally-extra { color: var(--gold); font-weight: 700; }
+
     /* Botones de variantes (chicha 480ml / 1L) */
     .prod-foot-variants {
       display: flex;
@@ -2371,6 +2423,7 @@
       </a>
       <button class="cart-clear" id="cart-clear">Vaciar carrito</button>
     </footer>
+
   </aside>
 
   <script>
@@ -2448,10 +2501,31 @@
         'chicha-1l': { name: 'Chicha Morada 1 L',    price: 4.00,  img: 'FOTO DE CHICHA DE MAIZ MORADO DE 1 LITRO.png' },
       };
 
+      const FREE_CLASICAS   = 3;
+      const FREE_ESPECIALES = 2;
+      const EXTRA_ESPECIAL  = 0.50;
+
+      const SALSAS = {
+        clasicas: [
+          { id: 'mayonesa', name: 'Mayonesa',          img: 'Salsas de La Mati/mayonesa.jpeg' },
+          { id: 'ketchup',  name: 'Ketchup',            img: 'Salsas de La Mati/ketchup.png' },
+          { id: 'mostaza',  name: 'Mostaza',            img: 'Salsas de La Mati/mostaza.png' },
+          { id: 'aji',      name: 'Ají Mati',           img: 'Salsas de La Mati/aji.png' },
+        ],
+        especiales: [
+          { id: 'honey',    name: 'Honey Mustard',       img: 'Salsas de La Mati/honey.png' },
+          { id: 'palta',    name: 'Palta',               img: 'Salsas de La Mati/palta.png' },
+          { id: 'aceituna', name: 'Aceituna',             img: 'Salsas de La Mati/aceituna.png' },
+          { id: 'pimenton', name: 'Pimentón Ahumado',    img: 'Salsas de La Mati/Pimentopn ahumado.png' },
+          { id: 'especial', name: 'Especial de la Casa', img: 'Salsas de La Mati/especial de la casa.png' },
+          { id: 'bigmati',  name: 'Big Mati',             img: 'Salsas de La Mati/big mati.jpeg' },
+        ]
+      };
+
       let cart = [];
       try { cart = JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch (e) { cart = []; }
-      // Filtrar items inválidos por si cambia el catálogo
       cart = cart.filter(item => item && PRODUCTS[item.id]);
+      cart.forEach(item => { if (!item.salsas) item.salsas = { cls: [], esp: [] }; });
 
       const $    = (sel) => document.querySelector(sel);
       const fab          = $('#cart-fab');
@@ -2462,15 +2536,52 @@
       const totalEl      = $('#cart-total');
       const closeBtn     = $('#cart-close');
       const checkoutBtn  = $('#cart-checkout');
-      const clearBtn     = $('#cart-clear');
+      const clearBtn = $('#cart-clear');
 
-      const fmt = (n) => 'S/. ' + n.toFixed(2);
+      const fmt        = (n) => 'S/. ' + n.toFixed(2);
       const totalCount = () => cart.reduce((s, i) => s + i.qty, 0);
-      const totalPrice = () => cart.reduce((s, i) => s + i.price * i.qty, 0);
+      const totalPrice = () => cart.reduce((s, i) => {
+        const espExtra = Math.max(0, (i.salsas?.esp?.length || 0) - FREE_ESPECIALES);
+        return s + i.price * i.qty + espExtra * EXTRA_ESPECIAL;
+      }, 0);
 
       function save() {
         localStorage.setItem(CART_KEY, JSON.stringify(cart));
         render();
+      }
+
+      function saucePickerHtml(item) {
+        const sl = item.salsas || { cls: [], esp: [] };
+        const clsMaxed = sl.cls.length >= FREE_CLASICAS;
+        const espExtras = Math.max(0, sl.esp.length - FREE_ESPECIALES);
+
+        const clsChips = SALSAS.clasicas.map(s => {
+          const on  = sl.cls.includes(s.id);
+          const dis = !on && clsMaxed;
+          return `<button class="sauce-chip${on ? ' sel' : ''}" data-sauce="${s.id}" data-stype="cls"${dis ? ' disabled' : ''}>${s.name}</button>`;
+        }).join('');
+
+        const espChips = SALSAS.especiales.map(s => {
+          const on = sl.esp.includes(s.id);
+          return `<button class="sauce-chip${on ? ' sel' : ''}" data-sauce="${s.id}" data-stype="esp">${s.name}</button>`;
+        }).join('');
+
+        let tally = `${sl.cls.length}/${FREE_CLASICAS} clásicas &nbsp;·&nbsp; ${sl.esp.length} especial${sl.esp.length !== 1 ? 'es' : ''}`;
+        if (espExtras > 0) tally += ` &nbsp;<span class="tally-extra">+S/. ${(espExtras * EXTRA_ESPECIAL).toFixed(2)} extra</span>`;
+
+        return `
+          <div class="cart-item-sauces">
+            <p class="sauces-label">Elige tus salsas</p>
+            <div class="sauces-subgroup">
+              <p class="sauces-subgroup-name">Clásicas — hasta ${FREE_CLASICAS} gratis</p>
+              <div class="sauces-chips">${clsChips}</div>
+            </div>
+            <div class="sauces-subgroup">
+              <p class="sauces-subgroup-name">Especiales — ${FREE_ESPECIALES} gratis · extra +S/. ${EXTRA_ESPECIAL.toFixed(2)}</p>
+              <div class="sauces-chips">${espChips}</div>
+            </div>
+            <p class="sauces-tally">${tally}</p>
+          </div>`;
       }
 
       function render() {
@@ -2499,6 +2610,7 @@
                 </div>
               </div>
               <button type="button" class="cart-item-remove" data-act="rm" aria-label="Quitar del pedido">×</button>
+              ${saucePickerHtml(item)}
             </div>
           `).join('');
           checkoutBtn.removeAttribute('disabled');
@@ -2530,7 +2642,7 @@
         if (!product) return;
         const existing = cart.find(item => item.id === productId);
         if (existing) existing.qty += 1;
-        else cart.push({ id: productId, ...product, qty: 1 });
+        else cart.push({ id: productId, ...product, qty: 1, salsas: { cls: [], esp: [] } });
         save();
         showToast(product.name + ' agregado');
         bumpFab();
@@ -2552,16 +2664,35 @@
       function checkout(e) {
         if (e) e.preventDefault();
         if (cart.length === 0) return;
-        const lines = cart.map(item =>
-          `• ${item.qty} × ${item.name} — ${fmt(item.price * item.qty)}`
-        ).join('\n');
+
+        const lines = cart.map(item => {
+          const sl     = item.salsas || { cls: [], esp: [] };
+          const clsSel = SALSAS.clasicas.filter(s => sl.cls.includes(s.id)).map(s => s.name);
+          const espSel = SALSAS.especiales.filter(s => sl.esp.includes(s.id)).map(s => s.name);
+          const extras = Math.max(0, espSel.length - FREE_ESPECIALES);
+
+          let sLine = '';
+          if (clsSel.length || espSel.length) {
+            sLine += '\n  🥣 ';
+            if (clsSel.length) sLine += `Clásicas: ${clsSel.join(', ')}`;
+            if (espSel.length) {
+              if (clsSel.length) sLine += ' · ';
+              const freeEsp  = espSel.slice(0, FREE_ESPECIALES);
+              const extraEsp = espSel.slice(FREE_ESPECIALES);
+              sLine += `Especiales: ${freeEsp.join(', ')}`;
+              if (extraEsp.length) sLine += ` + extras: ${extraEsp.join(', ')} (+S/. ${(extraEsp.length * EXTRA_ESPECIAL).toFixed(2)})`;
+            }
+          } else {
+            sLine = '\n  🥣 Sin salsas';
+          }
+          return `• ${item.qty} × ${item.name} — ${fmt(item.price * item.qty)}${sLine}`;
+        }).join('\n\n');
+
         const text =
-          `Hola La Mati! Quiero hacer este pedido:\n\n` +
-          `${lines}\n\n` +
-          `Total: ${fmt(totalPrice())}\n\n` +
-          `¡Gracias!`;
-        const url = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;
-        window.open(url, '_blank', 'noopener');
+          `Hola La Mati! Quiero hacer este pedido:\n\n${lines}\n\n` +
+          `Total: ${fmt(totalPrice())}\n\n¡Gracias!`;
+
+        window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
       }
 
       // Wire up
@@ -2578,17 +2709,32 @@
         if (e.key === 'Escape' && drawer.classList.contains('open')) closeCart();
       });
 
-      // Qty +/- y remove con event delegation
+      // Qty +/- · remove · sauce chips — event delegation
       bodyEl.addEventListener('click', (e) => {
         const btn = e.target.closest('button');
         if (!btn) return;
         const item = btn.closest('.cart-item');
         if (!item) return;
-        const id = item.dataset.id;
-        const act = btn.dataset.act;
+        const id  = item.dataset.id;
         const idx = cart.findIndex(i => i.id === id);
         if (idx === -1) return;
 
+        // Sauce chip
+        if (btn.classList.contains('sauce-chip')) {
+          if (btn.hasAttribute('disabled')) return;
+          const sauceId = btn.dataset.sauce;
+          const stype   = btn.dataset.stype;
+          if (!cart[idx].salsas) cart[idx].salsas = { cls: [], esp: [] };
+          const arr = cart[idx].salsas[stype];
+          const pos = arr.indexOf(sauceId);
+          if (pos !== -1) arr.splice(pos, 1);
+          else arr.push(sauceId);
+          save();
+          return;
+        }
+
+        // Qty / remove
+        const act = btn.dataset.act;
         if (act === 'inc') cart[idx].qty++;
         else if (act === 'dec') cart[idx].qty = Math.max(1, cart[idx].qty - 1);
         else if (act === 'rm') cart.splice(idx, 1);
