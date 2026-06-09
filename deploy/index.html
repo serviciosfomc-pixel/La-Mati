@@ -2496,9 +2496,9 @@
         arequipena: { name: 'Salchipapa Arequipeña', price: 14.00, img: 'Platos de La Mati/Salchipapa Arequipeña.png' },
         francesa:   { name: 'Salchipapa Francesa',   price: 18.00, img: 'Platos de La Mati/Salchipapa Francesa.png' },
         andina:     { name: 'Salchipapa Andina',     price: 16.50, img: 'Platos transparentes/7.png' },
-        combo:      { name: 'Combo Familia Mati',    price: 65.50, img: 'Platos de La Mati/clasica.png' },
-        combo2:     { name: 'Combo Familia Mati 2',  price: 69.50, img: 'Platos de La Mati/combo familiar 2.jpg' },
-        'chicha-1l': { name: 'Chicha Morada 1 L',    price: 4.00,  img: 'FOTO DE CHICHA DE MAIZ MORADO DE 1 LITRO.png' },
+        combo:      { name: 'Combo Familia Mati',    price: 65.50, img: 'Platos de La Mati/clasica.png', noSauce: true },
+        combo2:     { name: 'Combo Familia Mati 2',  price: 69.50, img: 'Platos de La Mati/combo familiar 2.jpg', noSauce: true },
+        'chicha-1l': { name: 'Chicha Morada 1 L',    price: 4.00,  img: 'FOTO DE CHICHA DE MAIZ MORADO DE 1 LITRO.png', noSauce: true },
       };
 
       const FREE_CLASICAS   = 3;
@@ -2551,6 +2551,7 @@
       }
 
       function saucePickerHtml(item) {
+        if (PRODUCTS[item.id]?.noSauce) return '';
         const sl = item.salsas || { cls: [], esp: [] };
         const clsMaxed = sl.cls.length >= FREE_CLASICAS;
         const espExtras = Math.max(0, sl.esp.length - FREE_ESPECIALES);
@@ -2666,6 +2667,9 @@
         if (cart.length === 0) return;
 
         const lines = cart.map(item => {
+          if (PRODUCTS[item.id]?.noSauce) {
+            return `• ${item.qty} × ${item.name} — ${fmt(item.price * item.qty)}`;
+          }
           const sl     = item.salsas || { cls: [], esp: [] };
           const clsSel = SALSAS.clasicas.filter(s => sl.cls.includes(s.id)).map(s => s.name);
           const espSel = SALSAS.especiales.filter(s => sl.esp.includes(s.id)).map(s => s.name);
