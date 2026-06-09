@@ -2496,14 +2496,23 @@
         arequipena: { name: 'Salchipapa Arequipeña', price: 14.00, img: 'Platos de La Mati/Salchipapa Arequipeña.png' },
         francesa:   { name: 'Salchipapa Francesa',   price: 18.00, img: 'Platos de La Mati/Salchipapa Francesa.png' },
         andina:     { name: 'Salchipapa Andina',     price: 16.50, img: 'Platos transparentes/7.png' },
-        combo:      { name: 'Combo Familia Mati',    price: 65.50, img: 'Platos de La Mati/clasica.png', noSauce: true },
-        combo2:     { name: 'Combo Familia Mati 2',  price: 69.50, img: 'Platos de La Mati/combo familiar 2.jpg', noSauce: true },
+        combo:      { name: 'Combo Familia Mati',    price: 65.50, img: 'Platos de La Mati/clasica.png', combo: true },
+        combo2:     { name: 'Combo Familia Mati 2',  price: 69.50, img: 'Platos de La Mati/combo familiar 2.jpg', combo: true },
         'chicha-1l': { name: 'Chicha Morada 1 L',    price: 4.00,  img: 'FOTO DE CHICHA DE MAIZ MORADO DE 1 LITRO.png', noSauce: true },
       };
 
       const FREE_CLASICAS   = 3;
       const FREE_ESPECIALES = 2;
       const EXTRA_ESPECIAL  = 0.50;
+
+      // Reglas de salsas según el producto
+      // maxCls/maxEsp: tope de selección · freeEsp: especiales gratis · extra: costo por especial extra
+      function sauceRule(id) {
+        if (PRODUCTS[id]?.combo) {
+          return { maxCls: 3, freeEsp: 3, maxEsp: 3, extra: 0 };
+        }
+        return { maxCls: FREE_CLASICAS, freeEsp: FREE_ESPECIALES, maxEsp: Infinity, extra: EXTRA_ESPECIAL };
+      }
 
       const SALSAS = {
         clasicas: [
@@ -2541,8 +2550,9 @@
       const fmt        = (n) => 'S/. ' + n.toFixed(2);
       const totalCount = () => cart.reduce((s, i) => s + i.qty, 0);
       const totalPrice = () => cart.reduce((s, i) => {
-        const espExtra = Math.max(0, (i.salsas?.esp?.length || 0) - FREE_ESPECIALES);
-        return s + i.price * i.qty + espExtra * EXTRA_ESPECIAL;
+        const r = sauceRule(i.id);
+        const espExtra = Math.max(0, (i.salsas?.esp?.length || 0) - r.freeEsp);
+        return s + i.price * i.qty + espExtra * r.extra;
       }, 0);
 
       function save() {
@@ -2552,9 +2562,11 @@
 
       function saucePickerHtml(item) {
         if (PRODUCTS[item.id]?.noSauce) return '';
+        const r  = sauceRule(item.id);
         const sl = item.salsas || { cls: [], esp: [] };
-        const clsMaxed = sl.cls.length >= FREE_CLASICAS;
-        const espExtras = Math.max(0, sl.esp.length - FREE_ESPECIALES);
+        const clsMaxed  = sl.cls.length >= r.maxCls;
+        const espMaxed  = sl.esp.length >= r.maxEsp;
+        const espExtras = Math.max(0, sl.esp.length - r.freeEsp);
 
         const clsChips = SALSAS.clasicas.map(s => {
           const on  = sl.cls.includes(s.id);
@@ -2563,22 +2575,30 @@
         }).join('');
 
         const espChips = SALSAS.especiales.map(s => {
-          const on = sl.esp.includes(s.id);
-          return `<button class="sauce-chip${on ? ' sel' : ''}" data-sauce="${s.id}" data-stype="esp">${s.name}</button>`;
+          const on  = sl.esp.includes(s.id);
+          const dis = !on && espMaxed;
+          return `<button class="sauce-chip${on ? ' sel' : ''}" data-sauce="${s.id}" data-stype="esp"${dis ? ' disabled' : ''}>${s.name}</button>`;
         }).join('');
 
-        let tally = `${sl.cls.length}/${FREE_CLASICAS} clásicas &nbsp;·&nbsp; ${sl.esp.length} especial${sl.esp.length !== 1 ? 'es' : ''}`;
-        if (espExtras > 0) tally += ` &nbsp;<span class="tally-extra">+S/. ${(espExtras * EXTRA_ESPECIAL).toFixed(2)} extra</span>`;
+        const espLabel = r.extra > 0
+          ? `Especiales — ${r.freeEsp} gratis · extra +S/. ${r.extra.toFixed(2)}`
+          : `Especiales — hasta ${r.maxEsp} gratis`;
+        const espCount = r.maxEsp === Infinity
+          ? `${sl.esp.length} especial${sl.esp.length !== 1 ? 'es' : ''}`
+          : `${sl.esp.length}/${r.maxEsp} especiales`;
+
+        let tally = `${sl.cls.length}/${r.maxCls} clásicas &nbsp;·&nbsp; ${espCount}`;
+        if (espExtras > 0 && r.extra > 0) tally += ` &nbsp;<span class="tally-extra">+S/. ${(espExtras * r.extra).toFixed(2)} extra</span>`;
 
         return `
           <div class="cart-item-sauces">
             <p class="sauces-label">Elige tus salsas</p>
             <div class="sauces-subgroup">
-              <p class="sauces-subgroup-name">Clásicas — hasta ${FREE_CLASICAS} gratis</p>
+              <p class="sauces-subgroup-name">Clásicas — hasta ${r.maxCls} gratis</p>
               <div class="sauces-chips">${clsChips}</div>
             </div>
             <div class="sauces-subgroup">
-              <p class="sauces-subgroup-name">Especiales — ${FREE_ESPECIALES} gratis · extra +S/. ${EXTRA_ESPECIAL.toFixed(2)}</p>
+              <p class="sauces-subgroup-name">${espLabel}</p>
               <div class="sauces-chips">${espChips}</div>
             </div>
             <p class="sauces-tally">${tally}</p>
@@ -2670,10 +2690,10 @@
           if (PRODUCTS[item.id]?.noSauce) {
             return `• ${item.qty} × ${item.name} — ${fmt(item.price * item.qty)}`;
           }
+          const r      = sauceRule(item.id);
           const sl     = item.salsas || { cls: [], esp: [] };
           const clsSel = SALSAS.clasicas.filter(s => sl.cls.includes(s.id)).map(s => s.name);
           const espSel = SALSAS.especiales.filter(s => sl.esp.includes(s.id)).map(s => s.name);
-          const extras = Math.max(0, espSel.length - FREE_ESPECIALES);
 
           let sLine = '';
           if (clsSel.length || espSel.length) {
@@ -2681,10 +2701,14 @@
             if (clsSel.length) sLine += `Clásicas: ${clsSel.join(', ')}`;
             if (espSel.length) {
               if (clsSel.length) sLine += ' · ';
-              const freeEsp  = espSel.slice(0, FREE_ESPECIALES);
-              const extraEsp = espSel.slice(FREE_ESPECIALES);
-              sLine += `Especiales: ${freeEsp.join(', ')}`;
-              if (extraEsp.length) sLine += ` + extras: ${extraEsp.join(', ')} (+S/. ${(extraEsp.length * EXTRA_ESPECIAL).toFixed(2)})`;
+              if (r.extra > 0) {
+                const freeEsp  = espSel.slice(0, r.freeEsp);
+                const extraEsp = espSel.slice(r.freeEsp);
+                sLine += `Especiales: ${freeEsp.join(', ')}`;
+                if (extraEsp.length) sLine += ` + extras: ${extraEsp.join(', ')} (+S/. ${(extraEsp.length * r.extra).toFixed(2)})`;
+              } else {
+                sLine += `Especiales: ${espSel.join(', ')}`;
+              }
             }
           } else {
             sLine = '\n  🥣 Sin salsas';
