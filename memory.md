@@ -78,6 +78,20 @@
 
 ## Bitácora de cambios
 
+### 2026-06-10 — v25: Precios actualizados según carta + eliminación de deploy/ duplicado
+- **Trigger:** El usuario envió captura de la carta con precios nuevos y pidió actualizarlos.
+- **Nuevos precios (4 cambios; los demás ya coincidían):**
+  | Plato | Antes | Ahora |
+  |-------|-------|-------|
+  | SalchiRoyal Especial | S/. 15.50 | **S/. 16.00** |
+  | Americana | S/. 15.00 | **S/. 16.50** |
+  | Salchipollo | S/. 14.50 | **S/. 15.00** |
+  | Francesa Especial | S/. 18.00 | **S/. 20.00** |
+  - Sin cambio: Clásica S/13, Mixta S/16, Arequipeña S/14, Andina S/16.50.
+- **Cada precio se cambió en 3 lugares:** tarjeta del menú, objeto JS `PRODUCTS` (cálculo del carrito) y carteles del hero (Americana slide 3, Francesa slide 2).
+- **Limpieza estructural importante:** Se eliminó la carpeta `deploy/` y el script `preparar_deploy.py`. Eran restos abandonados que duplicaban `index.html` y causaron confusión (el usuario editó/vio la copia vieja). **Netlify publica directamente desde la RAÍZ** (`.netlify/netlify.toml` → `publish = C:\Users\User\Documents\AgentePagWeb`), así que **`index.html` de la raíz es la única fuente y es lo que sale publicado.** Ya no hay copias.
+- **Nota:** si tras editar se ven precios viejos en el navegador, es **caché** → recargar con Ctrl+F5.
+
 ### 2026-05-24 — v24: Nuevos precios + Francesa TOP + reorden secciones + chicha solo 1L
 - **Trigger:** Cuatro ajustes pedidos por el usuario:
   1. Actualización de precios de platos.
