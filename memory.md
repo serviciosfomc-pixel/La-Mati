@@ -78,6 +78,12 @@
 
 ## Bitácora de cambios
 
+### 2026-06-11 — v26: Combos — fotos nuevas + precios ajustados
+- **Trigger:** El usuario subió fotos reales de los combos familiares y pidió ajustar precios.
+- **Fotos nuevas:** `Combos FLYERS/COMBO FAMILIAR 1.jpeg` y `COMBO FAMILIAR 2.jpeg` (collages 2x2). El Combo 1 dejó de usar la grilla de 4 imágenes sueltas (`combo-grid-imgs`) y ahora usa la foto única; el Combo 2 reemplazó `combo familiar 2.jpg`. Rutas con espacios → URL-encoded `Combos%20FLYERS/...`.
+- **Precios:** Combo Familia Mati S/65.50 → **S/68.00**; Combo Familia Mati 2 S/69.50 → **S/73.00**. Cambiados en los 3 sitios de cada uno: tarjeta, objeto JS `PRODUCTS` y (combo 1) botón del showcase "pack familiar".
+- **Nota:** El showcase "pack familiar" (sección bucket) conserva su grilla curada de 4 platos; solo se actualizó su precio.
+
 ### 2026-06-10 — v25: Precios actualizados según carta + eliminación de deploy/ duplicado
 - **Trigger:** El usuario envió captura de la carta con precios nuevos y pidió actualizarlos.
 - **Nuevos precios (4 cambios; los demás ya coincidían):**
